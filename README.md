@@ -4,6 +4,25 @@ This repository is for the Timothy Tran's ECC3479
 
 ## Repository Structure
 
+Basic folder structure:
+
+```text
+ecc3479-project/
+├── README.md                                         # Project overview and usage instructions
+├── requirements.txt                                  # Python dependencies for notebooks/scripts
+├── Code/                                             # Analysis notebooks and code assets
+│   ├── Dataset manuplation from raw to clean.ipynb   # Cleans raw CSV files into standardized datasets
+│   ├── Trend Code.ipynb                              # Builds trend charts and saves output plots
+├── data:raw:/ 
+│   ├── raw-data-databook.md                          # Definitions and notes for raw fields
+│   └── *.csv                                         # Raw player-count time series by game
+├── data:clean:/  
+│   ├── clean-data-codebook.md                        # Definitions and notes for cleaned fields
+│   └── *.csv                                         # Date-filtered standardized datasets
+├── outputs:/                                         # Generated charts and analysis outputs
+└── src:/                                             # Python source code modules (if used)
+```
+
 This repository is organized around a simple analysis pipeline:
 
 1. **Raw data source**
@@ -11,13 +30,13 @@ This repository is organized around a simple analysis pipeline:
    - Raw rows contain timestamp and player-count values (DateTime and Players), stored in the original source format.
 
 2. **Data cleaning and preparation**
-   - [code/Dataset manuplation from raw to clean.ipynb](code/Dataset%20manuplation%20from%20raw%20to%20clean.ipynb): Filters and prepares cleaned datasets, including metadata like update dates.
+   - [Code/Dataset manuplation from raw to clean.ipynb](Code/Dataset%20manuplation%20from%20raw%20to%20clean.ipynb): Filters and prepares cleaned datasets, including metadata like update dates.
    - [data:clean:](data:clean:): Cleaned CSV files with standardized columns `DateTime,Players`.
-   - Each clean file is date-filtered per game window, with the end date extended by 7 days (for example: `..._to_2025-03-04.csv`).
+   - Each clean file is date-filtered per game window, with the end date being 14 days after update date.
    - Each dataset is associated with an `update_date` tracking when the game received a major update or patch.
 
 3. **Trend analysis and visualization**
-   - [code/Trend Code.ipynb](code/Trend%20Code.ipynb): Generates trend plots for all 12 games showing daily players, 7-day moving average, EMA smoothing, linear trend, and update date markers.
+   - [Code/Trend Code.ipynb](Code/Trend%20Code.ipynb): Generates trend plots for all 12 games showing daily players, 7-day moving average, EMA smoothing, linear trend, and update date markers.
    - [outputs:](outputs:): Saved plot images (one per game) with filename pattern `game_name_players_trend.png`.
    - Each plot includes a red dotted vertical line marking the game's update date, helping visualize how major updates correlate with player count changes.
 
@@ -29,15 +48,14 @@ Additional files:
 
 Use this notebook to convert raw files into analysis-ready clean files:
 
-- [code/Dataset manuplation from raw to clean.ipynb](code/Dataset%20manuplation%20from%20raw%20to%20clean.ipynb)
+- [Code/Dataset manuplation from raw to clean.ipynb](Code/Dataset%20manuplation%20from%20raw%20to%20clean.ipynb)
 
 Steps:
 
-1. Open [code/Dataset manuplation from raw to clean.ipynb](code/Dataset%20manuplation%20from%20raw%20to%20clean.ipynb) in VS Code.
+1. Open [Code/Dataset manuplation from raw to clean.ipynb](Code/Dataset%20manuplation%20from%20raw%20to%20clean.ipynb) in VS Code.
 2. Select your Python kernel/environment.
 3. Run Cell 1 (the full pipeline cell).
-4. Wait for the printed output lines confirming each dataset was written.
-5. Check [data:clean:](data:clean:) for generated files named like:
+4. Check [data:clean:](data:clean:) for generated files named like:
    - `game_name_startDate_to_endDate.csv`
 
 What this notebook does:
@@ -51,7 +69,7 @@ What this notebook does:
 
 ## Trend Analysis & Visualization
 
-The [code/Trend Code.ipynb](code/Trend%20Code.ipynb) notebook generates comprehensive trend plots for all 12 games. Each plot displays:
+The [Code/Trend Code.ipynb](Code/Trend%20Code.ipynb) notebook generates comprehensive trend plots for all 12 games. Each plot displays:
 
 - **Daily Players** (blue line with markers): Raw daily player count data
 - **7-Day Moving Average** (crimson line): Smoothed trend reducing daily noise
