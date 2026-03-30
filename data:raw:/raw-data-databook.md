@@ -27,12 +27,7 @@ All raw files use the same two-column structure:
 | Sea of Thieves.csv | 3668 | 2020-06-03 | 2026-03-30 | 0 | 0 | 321 | 66906 |
 | Warframe.csv | 6348 | 2013-02-01 | 2026-03-30 | 0 | 102 | 1 | 189837 |
 
-## Data Quality Notes
 
-- `DateTime` has no missing values across all files.
-- Several files have missing `Players` values and should be cleaned before modeling.
-- `Helldivers.csv` has the largest `Players` missingness (2201 rows).
-- Some datasets include very low values (`Players = 1`), which may represent true low activity or placeholders.
 
 ## Suggested Cleaning Rules
 
