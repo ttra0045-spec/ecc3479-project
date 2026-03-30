@@ -15,12 +15,16 @@ This repository is for the Timothy Tran's ECC3479
 
 1. Create and activate a Python environment.
 2. Install the required packages with `pip install -r requirements.txt`.
-3. Open `code/Code.ipynb` in VS Code.
-4. Work through the notebook and save any figures you want to keep in `output/`.
+3. Open `code/Dataset manuplation from raw to clean.ipynb` in VS Code to make clean data.
+4.Open `code/Trend Code.ipynb` In Vs code to make outputs about trends
 
 
 ## Analysis Notes
 
 Will be filled with analysis once it is done
+
+## Documentation
+
+- Raw data databook: `docs:/raw-data-databook.md`
 
 
