@@ -1,0 +1,45 @@
+import csv
+from datetime import datetime
+from pathlib import Path
+
+
+RAW_FILE = Path("data:raw:/Apex Legends.csv")
+OUTPUT_FILE = Path("data:clean:/Apex Legends_2026-01-28_to_2026-02-25.csv")
+START_DATE = datetime.strptime("28/01/2026", "%d/%m/%Y").date()
+END_DATE = datetime.strptime("25/02/2026", "%d/%m/%Y").date()
+
+
+def filter_apex_data_by_date_range(
+	source_path: Path,
+	output_path: Path,
+	start_date,
+	end_date,
+) -> int:
+	with source_path.open("r", newline="", encoding="utf-8-sig") as src, output_path.open(
+		"w", newline="", encoding="utf-8"
+	) as dst:
+		reader = csv.DictReader(src)
+		writer = csv.DictWriter(dst, fieldnames=reader.fieldnames)
+		writer.writeheader()
+
+		rows_written = 0
+		for row in reader:
+			row_date = datetime.strptime(row["DateTime"], "%Y-%m-%d %H:%M:%S").date()
+			if start_date <= row_date <= end_date:
+				writer.writerow(row)
+				rows_written += 1
+
+	return rows_written
+
+
+if __name__ == "__main__":
+	written = filter_apex_data_by_date_range(
+		source_path=RAW_FILE,
+		output_path=OUTPUT_FILE,
+		start_date=START_DATE,
+		end_date=END_DATE,
+	)
+	print(f"Wrote {written} rows to {OUTPUT_FILE}")
+
+
+
