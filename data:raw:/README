@@ -1,7 +1,0 @@
-state,quarter,year,unemployment_rate,participation_rate
-
-state = which state
-quarter= what quarter is in
-year = what year
-unemployment_rate = what is the unemployment rate for that state year and quarter
-participation_rate = is the population proportion that particpated
