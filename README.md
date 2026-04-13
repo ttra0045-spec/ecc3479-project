@@ -2,6 +2,8 @@
 
 This repository is for the Timothy Tran's ECC3479
 
+How do major game updates affect short-term player engagement trajectories?
+
 ## Repository Structure
 
 Basic folder structure:
