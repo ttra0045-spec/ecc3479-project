@@ -1,0 +1,86 @@
+from pathlib import Path
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+
+
+UPDATE_DATES = {
+	"apex_legends_2025-01-28_to_2025-03-04": "2025-02-11",
+	"counter_strike_2_2024-04-23_to_2024-05-28": "2024-05-07",
+	"dead_by_daylight_2023-11-14_to_2023-12-19": "2023-11-28",
+	"deep_rock_galactic_2024-05-30_to_2024-07-04": "2024-06-13",
+	"destiny_2_2024-09-24_to_2024-10-29": "2024-10-08",
+	"don_t_starve_together_2023-04-13_to_2023-05-18": "2023-04-27",
+	"helldivers_2_2025-08-19_to_2025-09-23": "2025-09-02",
+	"no_man_s_sky_2025-01-15_to_2025-02-19": "2025-01-29",
+	"palworld_2024-12-09_to_2025-01-13": "2024-12-23",
+	"pubg__battlegrounds_2025-10-22_to_2025-11-26": "2025-11-05",
+	"sea_of_thieves_2024-10-03_to_2024-11-07": "2024-10-17",
+	"warframe_2025-11-26_to_2025-12-31": "2025-12-10",
+}
+
+
+def load_clean_data(clean_dir: Path) -> pd.DataFrame:
+	frames = []
+	for csv_path in sorted(clean_dir.glob("*.csv")):
+		game_id = csv_path.stem
+		if game_id not in UPDATE_DATES:
+			continue
+
+		df = pd.read_csv(csv_path)
+		df["DateTime"] = pd.to_datetime(df["DateTime"])
+		df["Players"] = pd.to_numeric(df["Players"], errors="coerce")
+		df = df.dropna(subset=["Players"]).copy()
+
+		update_date = pd.to_datetime(UPDATE_DATES[game_id])
+		df["game_id"] = game_id
+		df["update_date"] = update_date
+		frames.append(df)
+
+	if not frames:
+		raise ValueError("No clean CSV files were loaded. Check the clean data folder.")
+
+	combined = pd.concat(frames, ignore_index=True)
+
+	# Standardize per game so cross-game distributions are comparable.
+	combined["players_z"] = combined.groupby("game_id")["Players"].transform(
+		lambda s: (s - s.mean()) / s.std(ddof=1) if s.std(ddof=1) > 0 else 0.0
+	)
+	combined["event_day"] = (
+		combined["DateTime"].dt.normalize() - combined["update_date"].dt.normalize()
+	).dt.days
+
+	return combined
+
+
+def make_standardized_day_boxplot(df: pd.DataFrame, outputs_dir: Path) -> None:
+	sns.set_theme(style="whitegrid")
+
+	plt.figure(figsize=(16, 6))
+	sns.boxplot(data=df, x="event_day", y="players_z", color="#4c78a8", fliersize=2)
+	plt.axhline(0, color="gray", linewidth=1, linestyle="--")
+	plt.axvline(0, color="crimson", linewidth=1.5, linestyle=":")
+	plt.title("Combined Games: Day-by-Day Standardized Players Around Update")
+	plt.xlabel("Day relative to update (0 = update day)")
+	plt.ylabel("Standardized players (within-game z-score)")
+	plt.tight_layout()
+	plt.savefig(outputs_dir / "combined_day_by_day_standardized_boxplot.png", dpi=300)
+	plt.close()
+
+
+def main() -> None:
+	project_root = Path(__file__).resolve().parents[1]
+	clean_dir = project_root / "data:clean:"
+	outputs_dir = project_root / "outputs:"
+	outputs_dir.mkdir(parents=True, exist_ok=True)
+
+	combined = load_clean_data(clean_dir)
+	make_standardized_day_boxplot(combined, outputs_dir)
+
+	print("Saved:")
+	print(outputs_dir / "combined_day_by_day_standardized_boxplot.png")
+
+
+if __name__ == "__main__":
+	main()
