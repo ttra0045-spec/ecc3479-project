@@ -10,19 +10,26 @@ Basic folder structure:
 
 ```text
 ecc3479-project/
-├── README.md                                         # Project overview and usage instructions
-├── requirements.txt                                  # Python dependencies for notebooks/scripts
-├── Code/                                             # Analysis notebooks and code assets
-│   ├── Dataset manuplation from raw to clean.ipynb   # Cleans raw CSV files into standardized datasets
-│   ├── Trend Code.ipynb                              # Builds trend charts and saves output plots
-├── data:raw:/ 
-│   ├── raw-data-databook.md                          # Definitions and notes for raw fields
-│   └── *.csv                                         # Raw player-count time series by game
-├── data:clean:/  
-│   ├── clean-data-codebook.md                        # Definitions and notes for cleaned fields
-│   └── *.csv                                         # Date-filtered standardized datasets
-├── outputs:/                                         # Generated charts and analysis outputs
-└── src:/                                             # Python source code modules (if used)
+├── README.md                                         # Project overview, setup, and usage instructions.
+├── requirements.txt                                  # Lists the Python packages needed to run the project.
+├── Exploratory Data Analysis.md                      # A detailed report of the data analysis findings.
+├── Code/                                             # Folder containing all Jupyter notebooks and scripts.
+│   ├── Dataset manuplation from raw to clean.ipynb   # Notebook to process raw data into a clean, usable format.
+│   ├── Trend Code.ipynb                              # Notebook for generating trend analysis plots.
+│   ├── EDA.ipynb                                     # Notebook for initial exploratory data analysis.
+│   ├── box plot code                                 # Script for creating box plots.
+│   └── first_order_analysis.ipynb                    # Notebook for first-order and correlation analysis.
+├── data:raw:/                                        # Folder for original, untouched data files.
+│   ├── raw-data-databook.md                          # Data dictionary for the raw data.
+│   └── *.csv                                         # The raw CSV data files for each game.
+├── data:clean:/                                      # Folder for cleaned and preprocessed data.
+│   ├── clean-data-codebook.md                        # Data dictionary for the cleaned data.
+│   └── *.csv                                         # The cleaned CSV data files for each game.
+├── outputs:/                                         # Folder for all generated outputs like charts and reports.
+│   ├── *.png                                         # Image files of plots and charts.
+│   ├── *.md                                          # Markdown reports summarizing analysis results.
+│   └── *.csv                                         # CSV files with processed data or results.
+└── src:/                                             # Folder for any Python source code modules (currently empty).
 ```
 
 This repository is organized around a simple analysis pipeline:
