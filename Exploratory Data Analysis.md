@@ -22,22 +22,6 @@ Across all 12 cleaned files:
 - no duplicate dates
 - no gaps in daily sequence
 
-Per-game statistics (clean data):
-
-| Game | Rows | Date min | Date max | Players min | Players max | Players mean | Players SD |
-|---|---:|---|---|---:|---:|---:|---:|
-| Apex Legends | 36 | 2025-01-28 | 2025-03-04 | 94,512 | 226,225 | 162,393.6 | 37,340.1 |
-| Counter-Strike 2 | 36 | 2024-04-23 | 2024-05-28 | 1,263,426 | 1,631,616 | 1,494,634.1 | 79,691.9 |
-| Dead by Daylight | 36 | 2023-11-14 | 2023-12-19 | 34,866 | 58,019 | 41,177.9 | 5,391.5 |
-| Deep Rock Galactic | 36 | 2024-05-30 | 2024-07-04 | 10,380 | 54,160 | 27,956.4 | 13,540.1 |
-| Destiny 2 | 36 | 2024-09-24 | 2024-10-29 | 24,629 | 89,537 | 45,207.7 | 16,533.2 |
-| Don't Starve Together | 36 | 2023-04-13 | 2023-05-18 | 29,375 | 115,925 | 65,046.7 | 29,714.5 |
-| Helldivers 2 | 36 | 2025-08-19 | 2025-09-23 | 39,817 | 178,795 | 105,813.9 | 40,272.2 |
-| No Man's Sky | 36 | 2025-01-15 | 2025-02-19 | 8,195 | 43,695 | 22,691.1 | 11,777.9 |
-| Palworld | 36 | 2024-12-09 | 2025-01-13 | 33,821 | 212,817 | 126,708.9 | 69,530.4 |
-| PUBG: BATTLEGROUNDS | 36 | 2025-10-22 | 2025-11-26 | 591,321 | 755,104 | 645,912.8 | 33,612.0 |
-| Sea of Thieves | 36 | 2024-10-03 | 2024-11-07 | 7,791 | 15,873 | 11,309.9 | 2,165.6 |
-| Warframe | 36 | 2025-11-26 | 2025-12-31 | 72,137 | 175,546 | 106,446.7 | 26,356.5 |
 
 ## 2. Is this what I would expect?
 
@@ -63,159 +47,159 @@ For example, cleaned ranges include:
 
 ### deep_rock_galactic_2024-05-30_to_2024-07-04.csv
 
-|       |   Players |
-|:------|----------:|
-| count |      36   |
-| mean  |   27956.4 |
-| std   |   13540.1 |
-| min   |   10380   |
-| 25%   |   13148.5 |
-| 50%   |   29888   |
-| 75%   |   38966   |
-| max   |   54160   |
+|       |     Players |
+|:------|------------:|
+| count | 36          |
+| mean  |  1.1719e-16 |
+| std   |  1          |
+| min   | -1.2981     |
+| 25%   | -1.09363    |
+| 50%   |  0.142661   |
+| 75%   |  0.813115   |
+| max   |  1.93527    |
 
 ### palworld_2024-12-09_to_2025-01-13.csv
 
-|       |   Players |
-|:------|----------:|
-| count |      36   |
-| mean  |  126709   |
-| std   |   69530.4 |
-| min   |   33821   |
-| 25%   |   46766.5 |
-| 50%   |  153937   |
-| 75%   |  189670   |
-| max   |  212817   |
+|       |      Players |
+|:------|-------------:|
+| count | 36           |
+| mean  | -2.00457e-17 |
+| std   |  1           |
+| min   | -1.33593     |
+| 25%   | -1.14975     |
+| 50%   |  0.3916      |
+| 75%   |  0.905519    |
+| max   |  1.23842     |
 
 ### warframe_2025-11-26_to_2025-12-31.csv
 
-|       |   Players |
-|:------|----------:|
-| count |      36   |
-| mean  |  106447   |
-| std   |   26356.5 |
-| min   |   72137   |
-| 25%   |   80396.5 |
-| 50%   |  111338   |
-| 75%   |  123326   |
-| max   |  175546   |
+|       |      Players |
+|:------|-------------:|
+| count | 36           |
+| mean  | -1.69617e-16 |
+| std   |  1           |
+| min   | -1.30175     |
+| 25%   | -0.988377    |
+| 50%   |  0.185564    |
+| 75%   |  0.640423    |
+| max   |  2.62172     |
 
 ### no_man_s_sky_2025-01-15_to_2025-02-19.csv
 
-|       |   Players |
-|:------|----------:|
-| count |      36   |
-| mean  |   22691.1 |
-| std   |   11777.9 |
-| min   |    8195   |
-| 25%   |    9707.5 |
-| 50%   |   25921   |
-| 75%   |   31883   |
-| max   |   43695   |
+|       |      Players |
+|:------|-------------:|
+| count | 36           |
+| mean  |  6.96299e-17 |
+| std   |  1           |
+| min   | -1.23078     |
+| 25%   | -1.10236     |
+| 50%   |  0.274237    |
+| 75%   |  0.780437    |
+| max   |  1.78333     |
 
 ### dead_by_daylight_2023-11-14_to_2023-12-19.csv
 
-|       |   Players |
-|:------|----------:|
-| count |     36    |
-| mean  |  41177.9  |
-| std   |   5391.53 |
-| min   |  34866    |
-| 25%   |  36724.5  |
-| 50%   |  39196.5  |
-| 75%   |  44450    |
-| max   |  58019    |
+|       |      Players |
+|:------|-------------:|
+| count | 36           |
+| mean  |  4.37921e-16 |
+| std   |  1           |
+| min   | -1.17071     |
+| 25%   | -0.826002    |
+| 50%   | -0.367505    |
+| 75%   |  0.606893    |
+| max   |  3.12362     |
 
 ### don_t_starve_together_2023-04-13_to_2023-05-18.csv
 
-|       |   Players |
-|:------|----------:|
-| count |      36   |
-| mean  |   65046.7 |
-| std   |   29714.5 |
-| min   |   29375   |
-| 25%   |   35614.5 |
-| 50%   |   63180.5 |
-| 75%   |   90404.5 |
-| max   |  115925   |
+|       |      Players |
+|:------|-------------:|
+| count | 36           |
+| mean  | -2.46716e-17 |
+| std   |  1           |
+| min   | -1.20048     |
+| 25%   | -0.9905      |
+| 50%   | -0.0628042   |
+| 75%   |  0.853382    |
+| max   |  1.71224     |
 
 ### pubg__battlegrounds_2025-10-22_to_2025-11-26.csv
 
-|       |   Players |
-|:------|----------:|
-| count |        36 |
-| mean  |    645913 |
-| std   |     33612 |
-| min   |    591321 |
-| 25%   |    619538 |
-| 50%   |    642988 |
-| 75%   |    664395 |
-| max   |    755104 |
+|       |      Players |
+|:------|-------------:|
+| count | 36           |
+| mean  |  1.53272e-15 |
+| std   |  1           |
+| min   | -1.62417     |
+| 25%   | -0.784691    |
+| 50%   | -0.0870017   |
+| 75%   |  0.549861    |
+| max   |  3.24857     |
 
 ### counter_strike_2_2024-04-23_to_2024-05-28.csv
 
-|       |         Players |
-|:------|----------------:|
-| count |    36           |
-| mean  |     1.49463e+06 |
-| std   | 79691.9         |
-| min   |     1.26343e+06 |
-| 25%   |     1.47087e+06 |
-| 50%   |     1.50216e+06 |
-| 75%   |     1.55252e+06 |
-| max   |     1.63162e+06 |
+|       |      Players |
+|:------|-------------:|
+| count | 36           |
+| mean  |  1.28485e-15 |
+| std   |  1           |
+| min   | -2.90128     |
+| 25%   | -0.298153    |
+| 50%   |  0.0943871   |
+| 75%   |  0.726396    |
+| max   |  1.71889     |
 
 ### destiny_2_2024-09-24_to_2024-10-29.csv
 
-|       |   Players |
-|:------|----------:|
-| count |      36   |
-| mean  |   45207.7 |
-| std   |   16533.2 |
-| min   |   24629   |
-| 25%   |   31517   |
-| 50%   |   41549   |
-| 75%   |   54006.8 |
-| max   |   89537   |
+|       |      Players |
+|:------|-------------:|
+| count | 36           |
+| mean  |  2.22045e-16 |
+| std   |  1           |
+| min   | -1.24469     |
+| 25%   | -0.828074    |
+| 50%   | -0.221295    |
+| 75%   |  0.532203    |
+| max   |  2.68123     |
 
 ### sea_of_thieves_2024-10-03_to_2024-11-07.csv
 
-|       |   Players |
-|:------|----------:|
-| count |     36    |
-| mean  |  11309.9  |
-| std   |   2165.63 |
-| min   |   7791    |
-| 25%   |   9422    |
-| 50%   |  11370.5  |
-| 75%   |  13093.8  |
-| max   |  15873    |
+|       |      Players |
+|:------|-------------:|
+| count | 36           |
+| mean  |  2.89892e-16 |
+| std   |  1           |
+| min   | -1.62489     |
+| 25%   | -0.871763    |
+| 50%   |  0.0279749   |
+| 75%   |  0.823701    |
+| max   |  2.10705     |
 
 ### apex_legends_2025-01-28_to_2025-03-04.csv
 
-|       |   Players |
-|:------|----------:|
-| count |      36   |
-| mean  |  162394   |
-| std   |   37340.1 |
-| min   |   94512   |
-| 25%   |  140840   |
-| 50%   |  160168   |
-| 75%   |  195371   |
-| max   |  226225   |
+|       |      Players |
+|:------|-------------:|
+| count | 36           |
+| mean  |  3.45403e-16 |
+| std   |  1           |
+| min   | -1.81793     |
+| 25%   | -0.577238    |
+| 50%   | -0.0596044   |
+| 75%   |  0.883168    |
+| max   |  1.70946     |
 
 ### helldivers_2_2025-08-19_to_2025-09-23.csv
 
-|       |   Players |
-|:------|----------:|
-| count |      36   |
-| mean  |  105814   |
-| std   |   40272.2 |
-| min   |   39817   |
-| 25%   |   76768.2 |
-| 50%   |  109236   |
-| 75%   |  137192   |
-| max   |  178795   |
+|       |      Players |
+|:------|-------------:|
+| count | 36           |
+| mean  |  2.46716e-17 |
+| std   |  1           |
+| min   | -1.63877     |
+| 25%   | -0.721233    |
+| 50%   |  0.0849877   |
+| 75%   |  0.779165    |
+| max   |  1.8122      |
 
 ## 4. Did data cleaning do anything?
 
@@ -236,87 +220,54 @@ So cleaning did not just tidy names; it intentionally transformed large raw hist
 
 ## 5. Exploratory Analysis Of Variable Correlation
 
-### Does a first-order effect exist?
+### Pooled Correlation (across all games)
+- r(day, players) = 0.3455
+- r(day, log(players)) = -0.0193
+- r(day, z_within_game) = 0.3455
 
-Using day index within each 36-day window as a first-order time predictor:
+### Within-Game Trends
+10 of 12 games have a positive r(day, players) trend.
 
-- pooled correlation across all games: $r(\text{day}, \text{players}) = 0.0265$ (near zero)
-- pooled with log transform: $r(\text{day}, \log(\text{players})) = 0.1358$ (still weak)
-- within-game sign pattern: 10 of 12 games have positive $r(\text{day}, \text{players})$
-- pooled after within-game standardization (z-score by game): $r(\text{day}, z_{\text{within game}}) = 0.3455$
+#### Examples of stronger within-game first-order effects:
+| Game                                           |   r(day, players) |
+|:-----------------------------------------------|------------------:|
+| Palworld 2024 12 09 To 2025 01 13              |          0.785048 |
+| No Man S Sky 2025 01 15 To 2025 02 19          |          0.771367 |
+| Don T Starve Together 2023 04 13 To 2023 05 18 |          0.597799 |
+| Deep Rock Galactic 2024 05 30 To 2024 07 04    |          0.560332 |
+| Apex Legends 2025 01 28 To 2025 03 04          |          0.539019 |
+| Warframe 2025 11 26 To 2025 12 31              |          0.530523 |
 
-Interpretation:
+#### Near-flat/weak examples:
+| Game                                         |   r(day, players) |
+|:---------------------------------------------|------------------:|
+| Sea Of Thieves 2024 10 03 To 2024 11 07      |        -0.14275   |
+| Pubg  Battlegrounds 2025 10 22 To 2025 11 26 |        -0.0227268 |
+| Dead By Daylight 2023 11 14 To 2023 12 19    |         0.0269992 |
+| Counter Strike 2 2024 04 23 To 2024 05 28    |         0.03115   |
+| Helldivers 2 2025 08 19 To 2025 09 23        |         0.0600944 |
 
-- A first-order effect does exist within many games (player counts often rise through the event window).
-- The effect is masked when all games are pooled without adjustment.
-
-Examples of stronger within-game first-order effects:
-
-- Palworld: $r = 0.7850$
-- No Man's Sky: $r = 0.7714$
-- Don't Starve Together: $r = 0.5978$
-- Deep Rock Galactic: $r = 0.5603$
-- Warframe: $r = 0.5305$
-
-Near-flat/weak negative examples:
-
-- PUBG: $r = -0.0227$
-- Sea of Thieves: $r = -0.1428$
-
-Compact per-game correlation summary:
-
-| Game | $r(\text{day}, \text{players})$ | $r(\text{day}, \log(\text{players}))$ | Direction |
-|---|---:|---:|---|
-| Apex Legends | 0.5390 | 0.5983 | Positive |
-| Counter-Strike 2 | 0.0312 | 0.0369 | Positive (very weak) |
-| Dead by Daylight | 0.0270 | 0.0256 | Positive (very weak) |
-| Deep Rock Galactic | 0.5603 | 0.6762 | Positive |
-| Destiny 2 | 0.4095 | 0.5240 | Positive |
-| Don't Starve Together | 0.5978 | 0.6756 | Positive |
-| Helldivers 2 | 0.0601 | 0.1994 | Positive (weak) |
-| No Man's Sky | 0.7714 | 0.8130 | Positive (strong) |
-| Palworld | 0.7850 | 0.8343 | Positive (strong) |
-| PUBG: BATTLEGROUNDS | -0.0227 | -0.0094 | Negative (very weak) |
-| Sea of Thieves | -0.1428 | -0.1638 | Negative (weak) |
-| Warframe | 0.5305 | 0.6039 | Positive |
+## Compact per-game correlation summary:
+| Game                                           |   r(day, players) |   r(day, log(players)) | Direction   |
+|:-----------------------------------------------|------------------:|-----------------------:|:------------|
+| Apex Legends 2025 01 28 To 2025 03 04          |         0.539019  |            -0.00160659 | Positive    |
+| Counter Strike 2 2024 04 23 To 2024 05 28      |         0.03115   |             0.010747   | Flat        |
+| Dead By Daylight 2023 11 14 To 2023 12 19      |         0.0269992 |            -0.0518734  | Flat        |
+| Deep Rock Galactic 2024 05 30 To 2024 07 04    |         0.560332  |            -0.024988   | Positive    |
+| Destiny 2 2024 09 24 To 2024 10 29             |         0.409454  |            -0.0291612  | Positive    |
+| Don T Starve Together 2023 04 13 To 2023 05 18 |         0.597799  |             0.146589   | Positive    |
+| Helldivers 2 2025 08 19 To 2025 09 23          |         0.0600944 |            -0.0973795  | Flat        |
+| No Man S Sky 2025 01 15 To 2025 02 19          |         0.771367  |             0.226869   | Positive    |
+| Palworld 2024 12 09 To 2025 01 13              |         0.785048  |             0.212217   | Positive    |
+| Pubg  Battlegrounds 2025 10 22 To 2025 11 26   |        -0.0227268 |            -0.229322   | Flat        |
+| Sea Of Thieves 2024 10 03 To 2024 11 07        |        -0.14275   |            -0.0136688  | Negative    |
+| Warframe 2025 11 26 To 2025 12 31              |         0.530523  |            -0.0741743  | Positive    |
 
 ### Notes for modeling
 
 - The pooled trend remains close to zero while most within-game trends are positive, indicating aggregation masking.
 - Detailed bivariate diagnostics and full modeling implications are provided in Section 6.
 
-## 6. Additional Correlational/Bivariate Analysis
-
-To extend the first-order check, I also tested several bivariate relationships using derived features from `DateTime`.
-
-### Pooled (all games combined)
-
-| Pair | Metric | Result | Quick read |
-|---|---:|---:|---|
-| day index vs players | Pearson $r$ | 0.0265 | Almost no pooled linear trend |
-| day index vs players | Spearman $\rho$ | 0.1672 | Weak pooled monotonic increase |
-| day index vs $\log(\text{players})$ | Pearson $r$ | 0.1358 | Slightly clearer after transform |
-| weekend indicator vs players | Pearson $r$ | 0.0156 | Weekend effect is negligible when pooled |
-| post-update indicator vs players | Pearson $r$ | 0.0438 | Weak pooled step-change signal |
-| players$_{t-1}$ vs players$_t$ | Pearson $r$ | 0.9981 | Very strong serial dependence |
-| game mean vs game SD (12 games) | Pearson $r$ | 0.6938 | Higher-level games tend to be more variable |
-
-### Per-game bivariate summary (selected diagnostics)
-
-| Game | Spearman $\rho$(day, players) | $r$(post-update, players) | Mean(post)/Mean(pre) | Lag-1 autocorr |
-|---|---:|---:|---:|---:|
-| Apex Legends | 0.5647 | 0.7578 | 1.449 | 0.8869 |
-| Counter-Strike 2 | -0.0188 | 0.2658 | 1.029 | 0.6302 |
-| Dead by Daylight | -0.0206 | 0.2760 | 1.077 | 0.4003 |
-| Deep Rock Galactic | 0.5274 | 0.8878 | 2.856 | 0.8963 |
-| Destiny 2 | 0.5755 | 0.7378 | 1.819 | 0.6989 |
-| Don't Starve Together | 0.5663 | 0.8252 | 2.428 | 0.9386 |
-| Helldivers 2 | 0.0396 | 0.2409 | 1.209 | 0.8637 |
-| No Man's Sky | 0.7022 | 0.9073 | 3.279 | 0.9232 |
-| Palworld | 0.6901 | 0.9611 | 4.064 | 0.9701 |
-| PUBG: BATTLEGROUNDS | 0.0705 | 0.3343 | 1.036 | 0.4230 |
-| Sea of Thieves | -0.1423 | 0.1525 | 1.061 | 0.6552 |
-| Warframe | 0.5310 | 0.8550 | 1.580 | 0.7607 |
 
 ### Key takeaways from bivariate analysis
 
@@ -325,9 +276,6 @@ Daily player counts are highly autocorrelated, so iid assumptions are not approp
 
 2. Update effects are heterogeneous.
 Some games show large post-update lifts (Palworld $\times 4.064$, No Man's Sky $\times 3.279$), while others are near flat (Counter-Strike 2 $\times 1.029$).
-
-3. Rank-based trends can differ from Pearson trends.
-For a few games, Pearson and Spearman disagree in sign/strength, suggesting nonlinearity or outlier influence within the short 36-day window.
 
 4. Scale and variance move together across games.
 Since mean and SD are positively correlated across games, raw-scale models will tend to be heteroskedastic.
@@ -338,5 +286,24 @@ Since mean and SD are positively correlated across games, raw-scale models will 
 - Use game-level intercepts and slopes (fixed effects with interactions, or hierarchical random effects).
 - Model transformed outcomes (for example, $\log(\text{players})$) and/or use robust/heteroskedasticity-consistent inference.
 - Include explicit update-event structure (pre/post indicator, event-time slope changes, or piecewise terms).
+
+## First-Order Analysis Summary
+
+This table summarizes the player count data for each game, showing the mean, standard deviation, min, and max of the z-scored player counts over the observed period. It also includes the first-order correlation between the day and the player count, which indicates the overall trend.
+
+| Game                                           |   Mean Players (Z-score) |   Std Dev Players |   Min Players |   Max Players |   r(day, players) |
+|:-----------------------------------------------|-------------------------:|------------------:|--------------:|--------------:|------------------:|
+| Apex Legends 2025 01 28 To 2025 03 04          |              3.45403e-16 |                 1 |      -1.81793 |       1.70946 |         0.539019  |
+| Counter Strike 2 2024 04 23 To 2024 05 28      |              1.28485e-15 |                 1 |      -2.90128 |       1.71889 |         0.03115   |
+| Dead By Daylight 2023 11 14 To 2023 12 19      |              4.37921e-16 |                 1 |      -1.17071 |       3.12362 |         0.0269992 |
+| Deep Rock Galactic 2024 05 30 To 2024 07 04    |              1.1719e-16  |                 1 |      -1.2981  |       1.93527 |         0.560332  |
+| Destiny 2 2024 09 24 To 2024 10 29             |              2.22045e-16 |                 1 |      -1.24469 |       2.68123 |         0.409454  |
+| Don T Starve Together 2023 04 13 To 2023 05 18 |             -2.46716e-17 |                 1 |      -1.20048 |       1.71224 |         0.597799  |
+| Helldivers 2 2025 08 19 To 2025 09 23          |              2.46716e-17 |                 1 |      -1.63877 |       1.8122  |         0.0600944 |
+| No Man S Sky 2025 01 15 To 2025 02 19          |              6.96299e-17 |                 1 |      -1.23078 |       1.78333 |         0.771367  |
+| Palworld 2024 12 09 To 2025 01 13              |             -2.00457e-17 |                 1 |      -1.33593 |       1.23842 |         0.785048  |
+| Pubg  Battlegrounds 2025 10 22 To 2025 11 26   |              1.53272e-15 |                 1 |      -1.62417 |       3.24857 |        -0.0227268 |
+| Sea Of Thieves 2024 10 03 To 2024 11 07        |              2.89892e-16 |                 1 |      -1.62489 |       2.10705 |        -0.14275   |
+| Warframe 2025 11 26 To 2025 12 31              |             -1.69617e-16 |                 1 |      -1.30175 |       2.62172 |         0.530523  |
 
 
