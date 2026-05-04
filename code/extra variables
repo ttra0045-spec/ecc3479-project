@@ -1,0 +1,18 @@
+| Game                      | Main extra controls to include                                                                       | Why                                                                                                                                              |
+| ------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Apex Legends**          | `season_launch_overlap`, `competitive_cycle_overlap`                                                 |  |
+| **Counter-Strike 2**      | `monetization_overlap`, `competitive_cycle_overlap`                                                  |
+| **Dead by Daylight**      | `dlc_expansion_overlap`, `licensed_collab_overlap`, `sale_overlap`                                   |    |
+| **Deep Rock Galactic**    | `season_launch_overlap` `sale_overlap`                                                              |                                                           |
+| **Destiny 2**             | `season_launch_overlap`, `dlc_expansion_overlap`                                                     | 
+| **Don’t Starve Together** |                                           |
+| **HELLDIVERS 2**          | `monetization_overlap`, `promo_event_overlap`                                                        |
+| **No Man’s Sky**          |                                                                      |      |
+| **Palworld**              | `holiday_overlap`, `sale_overlap`                                                                    | |
+| **Path of Exile**         | `season_launch_overlap`, `promo_event_overlap`                                                       ||
+| **PUBG**                  | `licensed_collab_overlap`, `competitive_cycle_overlap`                                               | |
+| **Rainbow Six Siege**     | `season_launch_overlap`, `competitive_cycle_overlap`, `monetization_overlap`                         |               |
+| **Sea of Thieves**        | `season_launch_overlap`, `holiday_overlap` only if your post-window reaches late October event noise | 
+| **THE FINALS**            | `season_launch_overlap`, `anniversary_overlap`, `holiday_overlap`, `sale_overlap`                    |                                   |
+| **V Rising**              |                                                                     |       |
+| **Warframe**              | `promo_event_overlap`                                       | 
