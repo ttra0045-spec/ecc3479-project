@@ -198,8 +198,8 @@ This model tests whether the update's effect differs between Co-op and PvP games
 
 $$
 \begin{aligned}
-\text{Players}_{\text{scaled}} = & \beta_0 + \beta_1(\text{post\_update}) + \beta_2(\text{is\_coop}) \
-& + \beta_3(\text{post\_update} \times \text{is\_coop}) \
+\text{Players}_{\text{scaled}} = & \beta_0 + \beta_1(\text{post\_update}) + \beta_2(\text{is\_coop}) \\
+& + \beta_3(\text{post\_update} \times \text{is\_coop}) \\
 & + \sum_j \delta_j C_j + \epsilon
 \end{aligned}
 $$
