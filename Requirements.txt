@@ -6,3 +6,7 @@ seaborn
 jupyter
 notebook
 tabulate
+statsmodels
+statsmodels
+statsmodels
+statsmodels

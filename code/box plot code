@@ -71,8 +71,8 @@ def make_standardized_day_boxplot(df: pd.DataFrame, outputs_dir: Path) -> None:
 
 def main() -> None:
 	project_root = Path(__file__).resolve().parents[1]
-	clean_dir = project_root / "data:clean:"
-	outputs_dir = project_root / "outputs:"
+	clean_dir = project_root / "data:clean"
+	outputs_dir = project_root / "outputs"
 	outputs_dir.mkdir(parents=True, exist_ok=True)
 
 	combined = load_clean_data(clean_dir)
