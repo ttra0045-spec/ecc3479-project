@@ -196,15 +196,15 @@ $$
 
 $$
 \begin{aligned}
-\text{Players\_scaled} = & \beta_0 + \beta_1(\text{post\_update}) + \beta_2(\text{is\_coop}) \\
-& + \beta_3(\text{post\_update} \times \text{is\_coop}) \\
+\text{Players}_{\text{scaled}} = & \beta_0 + \beta_1 \cdot \text{post}_{\text{update}} + \beta_2 \cdot \text{is}_{\text{coop}} \\
+& + \beta_3 \cdot (\text{post}_{\text{update}} \times \text{is}_{\text{coop}}) \\
 & + \sum_j \delta_j C_j + \epsilon
 \end{aligned}
 $$
 
 *   `post_update`: A binary variable that is 1 if the date is on or after the update, and 0 otherwise.
 *   `is_coop`: A binary variable that is 1 for co-op games, and 0 for PvP games.
-*   `post_update` $\times$ `is_coop`: The interaction term, which captures the differential effect of an update for co-op games.
+*   `post_update` × `is_coop`: The interaction term, which captures the differential effect of an update for co-op games.
 *   $C_j$: The same set of binary control variables as in Model 1.
 *   The coefficient $\beta_3$ is the key parameter for testing the hypothesis.
 
