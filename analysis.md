@@ -309,4 +309,77 @@ The event study regression results provide the core findings about how updates a
 
 The event study analysis provides strong evidence that game updates lead to an immediate and substantial increase in player engagement. On the day of an update (day 0), player counts increase by approximately **0.831 standard deviations** compared to the day before. This effect is sustained over the following days, gradually declining but remaining positive for at least a week after the update. The pre-update period shows no significant trends or abnormalities, supporting the inference that the observed increase is attributable to the update itself. These findings demonstrate the critical importance of regular content updates as a driver of player retention and engagement.
 
+## Threats to Validity
+
+This analysis makes a **causal claim**: that game updates cause increases in player engagement. Below is an assessment of the main threats to this causal interpretation:
+
+### Omitted Variable Bias (OVB)
+
+**Most plausible threat**: Unobserved events that coincide with update releases, such as:
+- Media coverage or streamer attention to the game
+- Competitor releases or major competitor updates
+- Seasonal trends (e.g., holiday periods, summer/winter gaming preferences)
+- Marketing campaigns or external promotions timed with updates
+
+**Expected direction**: The bias could be **positive** (amplifying the estimated effect) if developers strategically time updates during periods of expected high engagement, or **negative** (dampening the effect) if updates are released during poor engagement windows to try to recover.
+
+**What was done about it**: 
+- Included control variables for known overlapping events (`holiday_overlap`, `sale_overlap`, `promo_event_overlap`, `season_launch_overlap`, `licensed_collab_overlap`, `monetization_overlap`, `competitive_cycle_overlap`, `dlc_expansion_overlap`, `anniversary_overlap`).
+- The **parallel trends assumption** is validated by the event study plot: coefficients for days -14 through -2 (pre-update period) are all close to zero and not statistically significant. This suggests no large unobserved confounders are creating a pre-existing trend.
+- Despite these controls, some unobserved confounders may remain, and the causal effect should be interpreted with appropriate caution.
+
+### Selection Bias
+
+**Plausible threat**: The 16 games and their associated updates might have been selected based on known outcomes. For example:
+- Games might have been chosen because they had notable updates with visible effects
+- Developers might strategically time major updates when they expect success
+
+**Expected direction**: Would bias the estimate **upward** (overstating the true effect).
+
+**What was done about it**: 
+- All 16 games and their specified updates were analyzed systematically; no ex-post selection based on observed outcomes was made.
+- However, the player count data comes from Steam, which includes only PC games released on that platform. Results may not generalize to console games, mobile games, or non-Steam PC games.
+
+### Reverse Causality
+
+**Plausible threat**: Could games with declining player counts be more likely to release updates? If so, the direction of causality would be reversed (declining players cause updates, not updates causing player increases).
+
+**Expected direction**: Would bias downward (understating the true effect) if this were occurring.
+
+**What was done about it**: 
+- The pre-update period shows no significant declining trend in any game. If reverse causality were driving the result, we would expect to see declining players immediately before updates, which we do not observe.
+- The sharp, immediate spike on day 0 aligns with a causal effect of the update, not with reverse causality.
+
+### Measurement Error
+
+**Plausible threat**: Daily player counts may be measured with error due to:
+- Steam reporting lags
+- Fluctuations from data collection variability
+- Definition inconsistencies in what counts as a "player"
+
+**Expected direction**: Measurement error typically biases estimates **toward zero** (attenuation bias).
+
+**What was done about it**: 
+- Daily player counts are aggregated from Steam, a reliable source with consistent reporting.
+- Standardization by game reduces the impact of scale-dependent measurement error.
+- The effect size (0.831 SD) is large enough that modest measurement error is unlikely to change qualitative conclusions.
+
+### External Validity / Generalizability
+
+**Limitation**: Results are based on 16 multiplayer games on Steam, primarily from 2023-2026. The findings may not generalize to:
+- Single-player games
+- Console or mobile games
+- Games outside the Steam platform
+- Different genres or game types
+- Historical periods with different player behaviors (pre-2020, for example)
+- Non-major updates or patches of different scale
+
+**What was done about it**: 
+- The analysis focuses on "major updates," which are more likely to generate engagement spikes.
+- Results are explicitly framed as applying to this specific sample of games.
+
+### Summary
+
+Despite these limitations, the event study design with control variables, combined with the lack of pre-trending and the sharp temporal alignment of the effect with the treatment date, provides reasonably strong evidence for a causal effect of game updates on player engagement **within this sample**. Readers should interpret these findings as evidence for the importance of updates in driving short-term player engagement for multiplayer games on Steam, with appropriate caution about generalizing beyond this context.
+
 
