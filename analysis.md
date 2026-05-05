@@ -192,27 +192,7 @@ $$
 *   $\beta_k$: The coefficients of interest, representing the effect of being `k` days from the update relative to the day before.
 *   $\alpha$ is the constant, and $\epsilon$ is the error term.
 
-**Model 2: Interaction Model with Controls**
 
-This model tests whether the update's effect differs between Co-op and PvP games, controlling for other factors.
-
-$$
-\begin{aligned}
-\text{Players}_{\text{scaled}} = & \beta_0 + \beta_1(\text{post\_update}) + \beta_2(\text{is\_coop}) \\
-& + \beta_3(\text{post\_update} \times \text{is\_coop}) \\
-& + \sum_j \delta_j C_j + \epsilon
-\end{aligned}
-$$
-
-*   `post_update`: A binary variable that is 1 if the date is on or after the update, and 0 otherwise.
-*   `is_coop`: A binary variable that is 1 for co-op games, and 0 for PvP games.
-*   `post_update` $\times$ `is_coop`: The interaction term, which captures the differential effect of an update for co-op games.
-*   $C_j$: The same set of binary control variables as in Model 1.
-*   The coefficient $\beta_3$ is the key parameter for testing the hypothesis.
-
-**Model 2: Interaction Model with Controls**
-
-This model tests whether the update's effect differs between Co-op and PvP games, controlling for other factors.
 
 $$
 \begin{aligned}
