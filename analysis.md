@@ -198,13 +198,13 @@ The key parameters are the $\beta_k$ coefficients, which show how player counts 
 
 The event study regression provides the main results, showing how player counts change at each point in time relative to a game update.
 
-* **Day 0 (Update Day)**: The coefficient is **+0.831 (standard deviations)**. This indicates a large, statistically significant jump in player counts on the day of the update.
+* **Day 0 (Update Day)**: The coefficient is **+1.637 (standard deviations)**. This indicates a large, statistically significant jump in player counts on the day of the update.
 
 * **Direction**: All coefficients for days 0 and onward are **positive**, indicating that updates are consistently associated with increased player engagement immediately after release.
 
-* **Magnitude and Units**: The player count was standardized for this analysis (mean = 0, std = 1 for each game). Therefore, an effect of +0.831 means that on the day of an update, the typical game sees players increase by approximately 0.83 standard deviations above its normal level.
+* **Magnitude and Units**: The player count was standardized for this analysis (mean = 0, std = 1 for each game). Therefore, an effect of +1.637 means that on the day of an update, the typical game sees players increase by approximately 1.64 standard deviations above its normal level.
 
-* **Persistence**: The effects remain large and statistically significant for several days after the update. For example, day 1 has a coefficient of approximately +0.752, showing that the boost persists.
+* **Persistence**: The effects remain large and statistically significant for several days after the update. For example, day 1 has a coefficient of approximately +1.543, showing that the boost persists.
 
 * **Pre-update Period**: Importantly, the days leading up to the update (days -14 through -2) all have coefficients close to zero and are not statistically significant. This validates the identifying assumption that there are no pre-existing trends or confounding factors driving the post-update increase.
 
@@ -249,17 +249,17 @@ This model measures the day-by-day impact of an update relative to the day befor
 
 | Variable | Coefficient | Std. Error |
 |:---|---:|---:|
-| day_-14 | -0.019 | (0.124) |
-| day_-13 | -0.024 | (0.124) |
-| day_-12 | -0.033 | (0.124) |
+| day_-14 | -0.311 | (0.283) |
+| day_-13 | -0.189 | (0.283) |
+| day_-12 | -0.167 | (0.283) |
 | ... | ... | ... |
-| day_0 | 0.831*** | (0.124) |
-| day_1 | 0.752*** | (0.124) |
+| day_0 | 1.637*** | (0.262) |
+| day_1 | 1.543*** | (0.262) |
 | ... | ... | ... |
-| day_14 | 0.219* | (0.124) |
-| N | 464 | |
-| R-squared | 0.483 | |
-*Note: Table is truncated for brevity. Full results are in the HTML file. `* p<0.1; ** p<0.05; *** p<0.01`*
+| day_14 | 0.412 | (0.262) |
+| N | 436 | |
+| R-squared | 0.538 | |
+*Note: Table is truncated for brevity. Full results are in the HTML file. `* p<0.10; ** p<0.05; *** p<0.001`*
 </details>
 
 #### Overall Post-Update Effect
@@ -281,33 +281,33 @@ While the event study provides day-by-day effects, we also estimate an overall a
 
 | Variable | Event Study |
 |:---|:---:|
-| **Day 0 Effect** | 0.831*** |
-| | (0.124) |
-| **Day 1 Effect** | 0.752*** |
-| | (0.124) |
+| **Day 0 Effect** | 1.637*** |
+| | (0.262) |
+| **Day 1 Effect** | 1.543*** |
+| | (0.262) |
 | **Pre-update Days (-14 to -2)** | ~0.00 (not significant) |
 | **Controls** | Yes |
-| **Observations (N)** | 464 |
-| **R-squared** | 0.483 |
+| **Observations (N)** | 436 |
+| **R-squared** | 0.538 |
 | *Notes:* | |
 | *Standard errors in parentheses* | |
-| *`*** p<0.01`* | |
+| *`*** p<0.001`* | |
 
 ### Interpretation of Main Coefficients
 
 The event study regression results provide the core findings about how updates affect player engagement.
 
-*   **Day 0 (Update Day)**: The coefficient is **+0.831 standard deviations**, which is large, positive, and statistically significant (p<0.01).
-    *   **Interpretation**: On the day a game releases an update, its player count increases by approximately 0.83 standard deviations above the baseline (day -1), holding control variables constant.
-    *   **Magnitude**: This is a substantial effect. For a game with a standard deviation of 50,000 players, this would translate to roughly 41,500 additional players on the update day.
+*   **Day 0 (Update Day)**: The coefficient is **+1.637 standard deviations**, which is large, positive, and statistically significant (p<0.001).
+    *   **Interpretation**: On the day a game releases an update, its player count increases by approximately 1.64 standard deviations above the baseline (day -1), holding control variables constant.
+    *   **Magnitude**: This is a substantial effect. For a game with a standard deviation of 50,000 players, this would translate to roughly 82,000 additional players on the update day.
 
-*   **Persistence**: Subsequent days show similarly large effects (e.g., day 1 = +0.752), indicating that the increase is not a one-day spike but a sustained response to the content update.
+*   **Persistence**: Subsequent days show similarly large effects (e.g., day 1 = +1.543), indicating that the increase is not a one-day spike but a sustained response to the content update.
 
 *   **Pre-update Validation**: The coefficients for days -14 through -2 are all approximately zero and statistically insignificant, confirming that there is no pre-existing trend before the update. This strengthens the causal interpretation of the estimate.
 
 ### Conclusion
 
-The event study analysis provides strong evidence that game updates lead to an immediate and substantial increase in player engagement. On the day of an update (day 0), player counts increase by approximately **0.831 standard deviations** compared to the day before. This effect is sustained over the following days, gradually declining but remaining positive for at least a week after the update. The pre-update period shows no significant trends or abnormalities, supporting the inference that the observed increase is attributable to the update itself. These findings demonstrate the critical importance of regular content updates as a driver of player retention and engagement.
+The event study analysis provides strong evidence that game updates lead to an immediate and substantial increase in player engagement. On the day of an update (day 0), player counts increase by approximately **1.64 standard deviations** compared to the day before. This effect is sustained over the following days, gradually declining but remaining positive for at least a week after the update. The pre-update period shows no significant trends or abnormalities, supporting the inference that the observed increase is attributable to the update itself. These findings demonstrate the critical importance of regular content updates as a driver of player retention and engagement.
 
 ## Threats to Validity
 
@@ -362,7 +362,7 @@ This analysis makes a **causal claim**: that game updates cause increases in pla
 **What was done about it**: 
 - Daily player counts are aggregated from Steam, a reliable source with consistent reporting.
 - Standardization by game reduces the impact of scale-dependent measurement error.
-- The effect size (0.831 SD) is large enough that modest measurement error is unlikely to change qualitative conclusions.
+- The effect size (1.637 SD) is large enough that modest measurement error is unlikely to change qualitative conclusions.
 
 ### External Validity / Generalizability
 

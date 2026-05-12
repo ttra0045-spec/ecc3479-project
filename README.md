@@ -18,11 +18,13 @@ ecc3479-project/
 ├── requirements.txt                                  # Lists the Python packages needed to run the project.
 ├── analysis.md                                       # Main analysis report with regression results and findings.
 ├── Exploratory Data Analysis.md                      # A detailed report of the data analysis findings.
+├── Robustness_Check_Analysis.md                      # Robustness analysis report validating the main event-study result.
 ├── Code/                                             # Folder containing all Jupyter notebooks and scripts.
 │   ├── Dataset manuplation from raw to clean.ipynb   # Notebook to process raw data into a clean, usable format.
 │   ├── Trend Code.ipynb                              # Notebook for generating trend analysis plots.
 │   ├── EDA.ipynb                                     # Notebook for initial exploratory data analysis.
 │   ├── advanced_regression.ipynb                     # Event study and interaction analysis on update effects.
+│   ├── robustness_checks.ipynb                       # Notebook for robustness checks on the event-study result.
 │   ├── regression_analysis.ipynb                     # Regression models and statistical tests.
 │   ├── extra variables                               # File containing control variable specifications for each game.
 │   ├── box plot code                                 # Script for creating box plots.
@@ -79,7 +81,6 @@ To reproduce all results from scratch, follow these steps **in order**:
 2. Select your Python kernel/environment
 3. Run all cells (or just Cell 1 if it contains the full pipeline)
 4. **Expected output**: Cleaned CSV files in [data:clean:](data:clean:) with naming pattern `game_name_startDate_to_endDate.csv`
-5. **Time**: ~1-2 minutes
 
 **What it does**: Converts raw CSV files from [data:raw:](data:raw:) into analysis-ready format, filtering by date windows and adding update date metadata.
 
@@ -90,7 +91,6 @@ To reproduce all results from scratch, follow these steps **in order**:
 1. Open the notebook in VS Code
 2. Run all cells
 3. **Expected output**: Summary statistics, distributions, and basic visualizations
-4. **Time**: ~2-3 minutes
 
 **What it does**: Provides initial insights into the cleaned data structure and player count distributions across all 16 games.
 
@@ -101,7 +101,6 @@ To reproduce all results from scratch, follow these steps **in order**:
 1. Open the notebook in VS Code
 2. Run all cells
 3. **Expected output**: Individual trend plots saved to [outputs:](outputs:) with pattern `game_name_players_trend.png`
-4. **Time**: ~3-5 minutes
 
 **What it does**: Generates trend visualizations for all 16 games showing daily players, moving averages, and update date markers.
 
@@ -112,7 +111,6 @@ To reproduce all results from scratch, follow these steps **in order**:
 1. Open the notebook in VS Code
 2. Run all cells
 3. **Expected output**: Correlation analysis, summary statistics by game
-4. **Time**: ~1-2 minutes
 
 **What it does**: Performs correlation and simple statistical tests on the data.
 
@@ -126,11 +124,20 @@ To reproduce all results from scratch, follow these steps **in order**:
 4. **Expected output**: 
    - [outputs/dynamic_effects_plot.png](outputs/dynamic_effects_plot.png): Event study plot
    - [outputs/event_study_table.html](outputs/event_study_table.html): Full regression table
-5. **Time**: ~2-3 minutes
 
 **What it does**: Estimates the causal effect of updates on player counts using an event study design with control variables.
 
-### Step 6: Review Final Analysis Report
+### Step 6: Robustness Check Analysis
+
+**Notebook**: [Code/robustness_checks.ipynb](Code/robustness_checks.ipynb)
+
+1. Open the robustness checks notebook in VS Code
+2. Run all cells
+3. **Expected output**: Robustness summary table, placebo tests, pre-trends test, and interpretation
+
+**What it does**: Stress-tests the main event-study estimate using alternative controls, alternative samples, robust inference methods, and placebo checks.
+
+### Step 7: Review Final Analysis Report
 
 **Document**: [analysis.md](analysis.md)
 
@@ -158,9 +165,11 @@ After running the pipeline, verify these files are present:
 **Output tables** (should be in [outputs:](outputs:)):
 - [ ] event_study_table.html
 - [ ] interaction_effects_table.html (if interaction model was run)
+- [ ] robustness_summary_table.md
 
 **Main reports**:
 - [ ] analysis.md (contains final results and interpretation)
+- [ ] Robustness_Check_Analysis.md (contains the robustness checks and causal validation)
 
 If all files are present, the pipeline has completed successfully and you should see results matching [analysis.md](analysis.md).
 
@@ -207,7 +216,7 @@ The [Code/advanced_regression.ipynb](Code/advanced_regression.ipynb) notebook im
 
 - **Event Study Model**: Measures day-by-day changes in player counts for a 14-day window around each game update, with day -1 (before update) as the baseline.
 - **Control Variables**: Includes event indicators (holidays, sales, promotions, etc.) to isolate the update effect from other confounding factors.
-- **Key Finding**: Updates lead to an average increase of **0.831 standard deviations** in player counts on the day of release (day 0), with effects persisting for several days.
+- **Key Finding**: Updates lead to an average increase of **1.637 standard deviations** in player counts on the day of release (day 0), with effects persisting for several days.
 
 Results are documented in [analysis.md](analysis.md).
 
@@ -225,6 +234,7 @@ The complete analysis is documented in [analysis.md](analysis.md), which include
 Key outputs saved to [outputs:](outputs:):
 - **Trend plots**: `[game_name]_players_trend.png` for all 16 games
 - **Regression results**: `event_study_table.html`, `interaction_effects_table.html`
+- **Robustness results**: `robustness_summary_table.md`, `robustness_results.json`
 - **Visualizations**: `dynamic_effects_plot.png`, `combined_day_by_day_standardized_boxplot.png`
 - **Analysis summaries**: Various `.md` files with analysis results
 
@@ -233,5 +243,6 @@ Key outputs saved to [outputs:](outputs:):
 - Raw data databook: [data:raw:/raw-data-databook.md](data:raw:/raw-data-databook.md)
 - Clean data codebook: [data:clean:/clean-data-codebook.md](data:clean:/clean-data-codebook.md)
 - Main analysis: [analysis.md](analysis.md)
+- Robustness analysis: [Robustness_Check_Analysis.md](Robustness_Check_Analysis.md)
 
 

@@ -1,0 +1,19 @@
+{
+  "main_specification": {
+    "day_0_coefficient": 1.6366700643383636,
+    "standard_error": 0.261650178367109,
+    "ci_lower": 1.1223155958120494,
+    "ci_upper": 2.1510245328646778,
+    "n_observations": 436,
+    "r_squared": 0.5381783675986112
+  },
+  "robustness_checks": {
+    "passed": [
+      "Pre-trends test",
+      "Control set stability",
+      "Sample robustness",
+      "Inference methods",
+      "Placebo tests"
+    ]
+  }
+}

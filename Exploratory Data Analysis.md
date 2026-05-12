@@ -25,7 +25,7 @@ Across all 12 cleaned files:
 
 ## 2. Is this what I would expect?
 
-Yes. For a daily time-series gaming dataset, this is what we want:
+Yes. For the event-study analysis of update effects, this is what we want:
 
 - one timestamp per day
 - one numeric engagement variable (`Players`)
