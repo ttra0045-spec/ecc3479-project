@@ -1,6 +1,6 @@
 # Robustness Check Summary Table
 
-**Main Finding**: Updates cause +1.637 SD increase in players on day 0
+**Main Finding**: Updates cause +1.64 SD increase in players on day 0
 
 | Specification        |   Day 0 Coeff | Std. Error   | 95% CI Low   | 95% CI High   |   N | R²    |
 |:---------------------|--------------:|:-------------|:-------------|:--------------|----:|:------|
@@ -12,7 +12,7 @@
 | (6) PvP Only         |        1.271  | (0.5312)     | 0.2174       | 2.3247        | 131 | 0.450 |
 | (7) Co-op Only       |        1.9763 | (0.2746)     | 1.4323       | 2.5203        | 145 | 0.871 |
 | (8) HC3 Robust SE    |        1.6367 | (0.3990)     | 0.8546       | 2.4187        | 436 | 0.538 |
-| (9) Clustered SE     |        1.6367 | (0.4412)     | 0.7719       | 2.5015        | 436 | 0.538 |
-| (10) Bootstrap       |        1.6373 | (0.4013)     | 0.8615       | 2.4180        | 436 | —     |
+| (9) Clustered SE     |        1.6367 | (0.4363)     | 0.7815       | 2.4919        | 436 | 0.538 |
+| (10) Bootstrap       |        1.6291 | (0.3843)     | 0.8728       | 2.3708        | 436 | —     |
 | (11) Placebo Day -7  |        0.1271 | (0.3021)     | —            | —             | 436 | 0.538 |
 | (12) Placebo Day -14 |       -0.3108 | (0.2826)     | —            | —             | 436 | 0.538 |

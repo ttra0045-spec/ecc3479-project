@@ -1,19 +1,131 @@
 {
   "main_specification": {
-    "day_0_coefficient": 1.6366700643383636,
-    "standard_error": 0.261650178367109,
-    "ci_lower": 1.1223155958120494,
-    "ci_upper": 2.1510245328646778,
+    "day_0_coefficient": 1.6366700643383638,
+    "day_0_std_error": 0.2616501783671092,
+    "day_0_p_value": 1.0058541701616956e-09,
     "n_observations": 436,
     "r_squared": 0.5381783675986112
   },
-  "robustness_checks": {
-    "passed": [
-      "Pre-trends test",
-      "Control set stability",
-      "Sample robustness",
-      "Inference methods",
-      "Placebo tests"
-    ]
-  }
+  "robustness_checks": [
+    {
+      "spec": "(1) Main",
+      "coeff_day0": 1.6366700643383638,
+      "se_day0": 0.2616501783671092,
+      "p_day0": 1.0058541701616956e-09,
+      "ci_low_day0": 1.1223155958120492,
+      "ci_high_day0": 2.151024532864678,
+      "n_obs": 436,
+      "r_squared": 0.5381783675986112
+    },
+    {
+      "spec": "(2) No Controls",
+      "coeff_day0": 1.6366700643383638,
+      "se_day0": 0.2616501783671092,
+      "p_day0": 1.0058541701616956e-09,
+      "ci_low_day0": 1.1223155958120492,
+      "ci_high_day0": 2.151024532864678,
+      "n_obs": 436,
+      "r_squared": 0.5381783675986112
+    },
+    {
+      "spec": "(3) Game FE",
+      "coeff_day0": 1.6366700643383656,
+      "se_day0": 0.2594074768107119,
+      "p_day0": null,
+      "ci_low_day0": 1.1266661172272285,
+      "ci_high_day0": 2.1466740114495027,
+      "n_obs": 436,
+      "r_squared": 0.5627912566196864
+    },
+    {
+      "spec": "(4) Drop Outliers",
+      "coeff_day0": 1.6366700643383638,
+      "se_day0": 0.2616501783671092,
+      "p_day0": 1.0058541701616956e-09,
+      "ci_low_day0": 1.1223155958120492,
+      "ci_high_day0": 2.151024532864678,
+      "n_obs": 436,
+      "r_squared": 0.5381783675986112
+    },
+    {
+      "spec": "(5) Low-Vol Games",
+      "coeff_day0": 1.253683207928793,
+      "se_day0": 0.3128243410880719,
+      "p_day0": 7.676402343111616e-05,
+      "ci_low_day0": 0.6381711301062658,
+      "ci_high_day0": 1.86919528575132,
+      "n_obs": 341,
+      "r_squared": 0.5004040596235872
+    },
+    {
+      "spec": "(6) PvP Only",
+      "coeff_day0": 1.2710423647958884,
+      "se_day0": 0.5312020522067511,
+      "p_day0": 0.018551533388870275,
+      "ci_low_day0": 0.21740561290492644,
+      "ci_high_day0": 2.32467911668685,
+      "n_obs": 131,
+      "r_squared": 0.4496244217761608
+    },
+    {
+      "spec": "(7) Co-op Only",
+      "coeff_day0": 1.9763118222104192,
+      "se_day0": 0.27464983079108923,
+      "p_day0": 6.606666692835162e-11,
+      "ci_low_day0": 1.4323332257745989,
+      "ci_high_day0": 2.5202904186462396,
+      "n_obs": 145,
+      "r_squared": 0.871403342757351
+    },
+    {
+      "spec": "(8) HC3 Robust SE",
+      "coeff_day0": 1.6366700643383638,
+      "se_day0": 0.3990219838371545,
+      "p_day0": 4.954668939688121e-05,
+      "ci_low_day0": 0.8546013469778174,
+      "ci_high_day0": 2.4187387816989103,
+      "n_obs": 436,
+      "r_squared": 0.5381783675986112
+    },
+    {
+      "spec": "(9) Clustered SE",
+      "coeff_day0": 1.6366700643383638,
+      "se_day0": 0.4363356083920769,
+      "p_day0": 0.00020172809407472837,
+      "ci_low_day0": 0.7814679867175202,
+      "ci_high_day0": 2.4918721419592074,
+      "n_obs": 436,
+      "r_squared": 0.5381783675986112
+    },
+    {
+      "spec": "(10) Bootstrap",
+      "coeff_day0": 1.6291404252391466,
+      "se_day0": 0.3842840579271788,
+      "p_day0": null,
+      "ci_low_day0": 0.8728029370667548,
+      "ci_high_day0": 2.3708273160811406,
+      "n_obs": 436,
+      "r_squared": null
+    },
+    {
+      "spec": "(11) Placebo Day -7",
+      "coeff_day0": 0.1271425583437039,
+      "se_day0": 0.3021276018275281,
+      "p_day0": null,
+      "ci_low_day0": null,
+      "ci_high_day0": null,
+      "n_obs": 436,
+      "r_squared": 0.5381783675986112
+    },
+    {
+      "spec": "(12) Placebo Day -14",
+      "coeff_day0": -0.310822811730486,
+      "se_day0": 0.28261449328156735,
+      "p_day0": null,
+      "ci_low_day0": null,
+      "ci_high_day0": null,
+      "n_obs": 436,
+      "r_squared": 0.5381783675986112
+    }
+  ]
 }

@@ -180,15 +180,14 @@ Here are the regression models expressed in equation form.
 
 **Model 1: Event Study with Controls**
 
-This model captures the dynamic, day-by-day effect of an update while accounting for control variables.
+This model captures the dynamic, day-by-day effect of an update. In the current cleaned data, overlap-event controls are documented as labels in metadata but are not observed as separate indicator columns.
 
 $$
-\text{Players}_{\text{scaled}} = \alpha + \sum_{k=-14, k\neq-1}^{14} \beta_k D_k + \sum_j \delta_j C_j + \epsilon
+\text{Players}_{\text{scaled}} = \alpha + \sum_{k=-14, k\neq-1}^{14} \beta_k D_k + \epsilon
 $$
 
 *   `Players_scaled`: The player count for a game on a given day, measured in standard deviations from that game's average.
 *   $D_k$: A set of binary variables, where $D_k=1$ if the observation is `k` days from the update, and 0 otherwise. Day -1 is the omitted reference category.
-*   $C_j$: A set of binary control variables for confounding events (e.g., `holiday_overlap`, `sale_overlap`).
 *   $\beta_k$: The coefficients of interest, representing the effect of being `k` days from the update relative to the day before.
 *   $\alpha$ is the constant, and $\epsilon$ is the error term.
 
@@ -222,7 +221,7 @@ The analysis aims to identify the **causal effect** of a game update (the "treat
     *   **`post_update`**: A binary variable equal to 1 for all observations on or after an update, and 0 otherwise.
     *   **`is_coop`**: A binary variable for game type, equal to 1 for co-op games and 0 for PvP games.
     *   **`interaction`**: The product of `post_update` and `is_coop`, used to test if the treatment effect differs by game type.
-    *   **Control Variables**: A set of binary variables to control for overlapping events that could confound the analysis, such as holidays, sales, or in-game promotions.
+    *   **Control Variables**: The codebase records intended overlap-control labels for documentation, but the cleaned data do not currently contain observed indicators for those events. As a result, the event-study estimates here are driven by the event-time structure rather than additional measured controls.
 
 *   **Sample**: The analysis uses **panel data**, consisting of daily player count observations for 16 different games. Each game is observed for a window of time surrounding a major update, allowing for the analysis of changes over time and across different games.
 
@@ -272,7 +271,7 @@ While the event study provides day-by-day effects, we also estimate an overall a
 | | (0.071) |
 | `const` | -0.043 |
 | | (0.040) |
-| Controls | Yes |
+| Controls | Metadata labels only (no observed overlap indicators in cleaned data) |
 | N | 992 |
 | R-squared | 0.025 |
 *Note: Standard errors in parentheses. This model controls for overlapping events.*
@@ -298,7 +297,7 @@ While the event study provides day-by-day effects, we also estimate an overall a
 The event study regression results provide the core findings about how updates affect player engagement.
 
 *   **Day 0 (Update Day)**: The coefficient is **+1.637 standard deviations**, which is large, positive, and statistically significant (p<0.001).
-    *   **Interpretation**: On the day a game releases an update, its player count increases by approximately 1.64 standard deviations above the baseline (day -1), holding control variables constant.
+    *   **Interpretation**: On the day a game releases an update, its player count increases by approximately 1.64 standard deviations above the baseline (day -1), driven by event-time contrasts in the standardized outcome.
     *   **Magnitude**: This is a substantial effect. For a game with a standard deviation of 50,000 players, this would translate to roughly 82,000 additional players on the update day.
 
 *   **Persistence**: Subsequent days show similarly large effects (e.g., day 1 = +1.543), indicating that the increase is not a one-day spike but a sustained response to the content update.
@@ -324,7 +323,7 @@ This analysis makes a **causal claim**: that game updates cause increases in pla
 **Expected direction**: The bias could be **positive** (amplifying the estimated effect) if developers strategically time updates during periods of expected high engagement, or **negative** (dampening the effect) if updates are released during poor engagement windows to try to recover.
 
 **What was done about it**: 
-- Included control variables for known overlapping events (`holiday_overlap`, `sale_overlap`, `promo_event_overlap`, `season_launch_overlap`, `licensed_collab_overlap`, `monetization_overlap`, `competitive_cycle_overlap`, `dlc_expansion_overlap`, `anniversary_overlap`).
+- The notebook records intended overlap-control labels (`holiday_overlap`, `sale_overlap`, `promo_event_overlap`, `season_launch_overlap`, `licensed_collab_overlap`, `monetization_overlap`, `competitive_cycle_overlap`, `dlc_expansion_overlap`, `anniversary_overlap`), but the cleaned data do not provide observed values for those indicators.
 - The **parallel trends assumption** is validated by the event study plot: coefficients for days -14 through -2 (pre-update period) are all close to zero and not statistically significant. This suggests no large unobserved confounders are creating a pre-existing trend.
 - Despite these controls, some unobserved confounders may remain, and the causal effect should be interpreted with appropriate caution.
 
@@ -380,6 +379,6 @@ This analysis makes a **causal claim**: that game updates cause increases in pla
 
 ### Summary
 
-Despite these limitations, the event study design with control variables, combined with the lack of pre-trending and the sharp temporal alignment of the effect with the treatment date, provides reasonably strong evidence for a causal effect of game updates on player engagement **within this sample**. Readers should interpret these findings as evidence for the importance of updates in driving short-term player engagement for multiplayer games on Steam, with appropriate caution about generalizing beyond this context.
+Despite these limitations, the event study design, combined with the lack of pre-trending and the sharp temporal alignment of the effect with the treatment date, provides reasonably strong evidence for a causal effect of game updates on player engagement **within this sample**. Readers should interpret these findings as evidence for the importance of updates in driving short-term player engagement for multiplayer games on Steam, with appropriate caution about generalizing beyond this context.
 
 

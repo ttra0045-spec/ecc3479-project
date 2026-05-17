@@ -6,7 +6,7 @@ This repository is for Timothy Tran's ECC3479 project.
 
 **Dataset**: Daily player count data for 16 multiplayer games over ~1-2 month periods, centered around major game updates.
 
-**Analysis**: Event study design using OLS regression with control variables to estimate the causal effect of updates on player engagement.
+**Analysis**: Event study design using OLS regression to estimate the causal effect of updates on player engagement; overlap-event control labels are documented, but not currently observed as separate indicators in cleaned data.
 
 ## Repository Structure
 
@@ -60,7 +60,7 @@ This repository is organized around a simple analysis pipeline:
    - Each plot includes a red dotted vertical line marking the game's update date, helping visualize how major updates correlate with player count changes.
 
 4. **Advanced regression analysis**
-   - [Code/advanced_regression.ipynb](Code/advanced_regression.ipynb): Event study design measuring day-by-day effects of updates on player counts, with control variables for confounding events.
+   - [Code/advanced_regression.ipynb](Code/advanced_regression.ipynb): Event study design measuring day-by-day effects of updates on player counts; overlap-event controls are tracked as labels in metadata.
    - [outputs/event_study_table.html](outputs/event_study_table.html): Full regression table from the event study model.
    - [outputs/dynamic_effects_plot.png](outputs/dynamic_effects_plot.png): Visualization of coefficient estimates and confidence intervals for each day relative to update.
 
@@ -125,7 +125,7 @@ To reproduce all results from scratch, follow these steps **in order**:
    - [outputs/dynamic_effects_plot.png](outputs/dynamic_effects_plot.png): Event study plot
    - [outputs/event_study_table.html](outputs/event_study_table.html): Full regression table
 
-**What it does**: Estimates the causal effect of updates on player counts using an event study design with control variables.
+**What it does**: Estimates the causal effect of updates on player counts using an event study design; overlap-event controls are currently documented as labels rather than observed indicator columns.
 
 ### Step 6: Robustness Check Analysis
 
@@ -215,8 +215,8 @@ All plots are saved to [outputs:](outputs:) with the naming pattern: `game_name_
 The [Code/advanced_regression.ipynb](Code/advanced_regression.ipynb) notebook implements an event study design to estimate the causal effect of game updates on player engagement:
 
 - **Event Study Model**: Measures day-by-day changes in player counts for a 14-day window around each game update, with day -1 (before update) as the baseline.
-- **Control Variables**: Includes event indicators (holidays, sales, promotions, etc.) to isolate the update effect from other confounding factors.
-- **Key Finding**: Updates lead to an average increase of **1.637 standard deviations** in player counts on the day of release (day 0), with effects persisting for several days.
+- **Control Labels**: Tracks intended overlap events (holidays, sales, promotions, etc.) in metadata; cleaned files currently do not include those indicators as observed columns.
+- **Key Finding**: Updates lead to an average increase of **1.64 standard deviations** in player counts on the day of release (day 0), with effects persisting for several days.
 
 Results are documented in [analysis.md](analysis.md).
 

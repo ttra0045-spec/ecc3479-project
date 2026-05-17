@@ -39,11 +39,13 @@ def run_event_study(df, filtered_df, all_control_vars, spec_name="Main"):
     model = sm.OLS(y, X).fit()
     
     coeff_0, se_0, ci_low_0, ci_high_0 = get_day_coefficient(model, 0)
+    p_0 = 2 * stats.t.sf(abs(coeff_0 / se_0), model.df_resid) if coeff_0 is not None and se_0 not in (None, 0) else np.nan
     
     results = {
         'spec': spec_name,
         'coeff_day0': coeff_0,
         'se_day0': se_0,
+        'p_day0': p_0,
         'ci_low_day0': ci_low_0,
         'ci_high_day0': ci_high_0,
         'n_obs': int(model.nobs),
@@ -74,11 +76,13 @@ def run_event_study_robust_se(df, filtered_df, all_control_vars, cov_type='HC3',
     
     coeff_0, se_0, _, _ = get_day_coefficient(model, 0)
     ci = model.conf_int().loc[f'day_0']
+    p_0 = 2 * stats.t.sf(abs(coeff_0 / se_0), model.df_resid) if coeff_0 is not None and se_0 not in (None, 0) else np.nan
     
     results = {
         'spec': spec_name,
         'coeff_day0': coeff_0,
         'se_day0': se_0,
+        'p_day0': p_0,
         'ci_low_day0': ci[0],
         'ci_high_day0': ci[1],
         'n_obs': int(model.nobs),
@@ -185,7 +189,9 @@ def pre_trends_test(model, pre_days=range(-14, -1)):
     
     # F-test under null that all pre-trend coefficients = 0
     wald_test = model.wald_test(r_matrix)
-    return float(wald_test.statistic), float(wald_test.pvalue), pre_vars
+    f_stat = np.asarray(wald_test.statistic).item()
+    p_value = np.asarray(wald_test.pvalue).item()
+    return float(f_stat), float(p_value), pre_vars
 
 
 def placebo_test(df, filtered_df, all_control_vars, placebo_day=-7, spec_name="Placebo"):
