@@ -1,0 +1,13 @@
+Specification,Day 0 coeff.,Std. error,95% CI Low,95% CI High,N,Interpretation
+Main event study,1.6367,0.2617,1.1223,2.151,436,Baseline estimate
+No controls,1.6367,0.2617,1.1223,2.151,436,Unchanged without control labels
+Game fixed effects,1.6367,0.2594,1.1267,2.1467,436,Stable after absorbing game-level differences
+Drop outliers,1.6367,0.2617,1.1223,2.151,436,Holds when outliers removed
+Low-volatility games,1.2537,0.3128,0.6382,1.8692,341,Smaller but still positive
+PvP only,1.271,0.5312,0.2174,2.3247,131,Positive in competitive games
+Co-op only,1.9763,0.2746,1.4323,2.5203,145,Larger in co-op sample
+HC3 robust SE,1.6367,0.399,0.8546,2.4187,436,Robust to heteroskedasticity
+Clustered SE,1.6367,0.4363,0.7815,2.4919,436,Robust to within-game clustering
+Bootstrap,1.6291,0.3843,0.8728,2.3708,436,Similar under resampling
+Placebo day -7,0.1271,0.3021,,,436,No fake pre-update effect
+Placebo day -14,-0.3108,0.2826,,,436,No fake pre-update effect

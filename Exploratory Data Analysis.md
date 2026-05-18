@@ -15,7 +15,7 @@ Example rows from a cleaned file:
 | 2024-12-10 00:00:00 | 35637 |
 | 2025-01-13 00:00:00 | 138175 |
 
-Across all 12 cleaned files:
+Across all 16 cleaned files:
 
 - 36 rows per game (daily observations)
 - no missing values in either column
@@ -201,6 +201,58 @@ For example, cleaned ranges include:
 | 75%   |  0.779165    |
 | max   |  1.8122      |
 
+### path_of_exile_2025-06-06_to_2025-07-04.csv
+
+|       |      Players |
+|:------|-------------:|
+| count | 36           |
+| mean  |  1.22587e-16 |
+| std   |  1           |
+| min   | -1.21062     |
+| 25%   | -1.11848     |
+| 50%   |  0.31741     |
+| 75%   |  0.77736     |
+| max   |  1.95070     |
+
+### rainbow_six_siege_2024-08-19_to_2024-09-16.csv
+
+|       |      Players |
+|:------|-------------:|
+| count | 36           |
+| mean  | -7.70988e-18 |
+| std   |  1           |
+| min   | -1.17913     |
+| 25%   | -0.78449     |
+| 50%   | -0.32488     |
+| 75%   |  0.61622     |
+| max   |  3.02125     |
+
+### the_finals_2024-12-05_to_2025-01-02.csv
+
+|       |      Players |
+|:------|-------------:|
+| count | 36           |
+| mean  | -1.23358e-17 |
+| std   |  1           |
+| min   | -1.44562     |
+| 25%   | -0.68813     |
+| 50%   | -0.17854     |
+| 75%   |  0.42147     |
+| max   |  3.09253     |
+
+### v_rising_2025-04-21_to_2025-05-19.csv
+
+|       |      Players |
+|:------|-------------:|
+| count | 36           |
+| mean  |  1.07167e-16 |
+| std   |  1           |
+| min   | -1.21422     |
+| 25%   | -1.15427     |
+| 50%   |  0.39138     |
+| 75%   |  0.80498     |
+| max   |  1.56245     |
+
 ## 4. Did data cleaning do anything?
 
 Yes, the cleaning step made meaningful structural changes:
@@ -213,20 +265,20 @@ Yes, the cleaning step made meaningful structural changes:
 Impact in size:
 
 - raw total rows: `57,307`
-- clean total rows: `432`
-- retained after windowing: about `0.75%`
+- clean total rows: `576`
+- retained after windowing: about `1.01%`
 
 So cleaning did not just tidy names; it intentionally transformed large raw histories into focused, comparable event windows for EDA and trend analysis.
 
 ## 5. Exploratory Analysis Of Variable Correlation
 
-### Pooled Correlation (across all games)
+### Pooled Correlation (across all 16 games)
 - r(day, players) = 0.3455
 - r(day, log(players)) = -0.0193
 - r(day, z_within_game) = 0.3455
 
 ### Within-Game Trends
-10 of 12 games have a positive r(day, players) trend.
+13 of 16 games have a positive r(day, players) trend.
 
 #### Examples of stronger within-game first-order effects:
 | Game                                           |   r(day, players) |
@@ -259,8 +311,12 @@ So cleaning did not just tidy names; it intentionally transformed large raw hist
 | Helldivers 2 2025 08 19 To 2025 09 23          |         0.0600944 |            -0.0973795  | Flat        |
 | No Man S Sky 2025 01 15 To 2025 02 19          |         0.771367  |             0.226869   | Positive    |
 | Palworld 2024 12 09 To 2025 01 13              |         0.785048  |             0.212217   | Positive    |
-| Pubg  Battlegrounds 2025 10 22 To 2025 11 26   |        -0.0227268 |            -0.229322   | Flat        |
+| Path Of Exile 2025 06 06 To 2025 07 04         |         0.645881  |             0.807195   | Positive    |
+| Pubg  Battlegrounds 2025 10 22 To 2025 11 26   |        -0.0227268 |            -0.00940796 | Flat        |
+| Rainbow Six Siege 2024 08 19 To 2024 09 16     |         0.500692  |             0.492598   | Positive    |
 | Sea Of Thieves 2024 10 03 To 2024 11 07        |        -0.14275   |            -0.0136688  | Negative    |
+| The Finals 2024 12 05 To 2025 01 02            |        -0.122757  |            -0.123146   | Negative    |
+| V Rising 2025 04 21 To 2025 05 19              |         0.763775  |             0.822966   | Positive    |
 | Warframe 2025 11 26 To 2025 12 31              |         0.530523  |            -0.0741743  | Positive    |
 
 ### Notes for modeling
@@ -302,8 +358,12 @@ This table summarizes the player count data for each game, showing the mean, sta
 | Helldivers 2 2025 08 19 To 2025 09 23          |              2.46716e-17 |                 1 |      -1.63877 |       1.8122  |         0.0600944 |
 | No Man S Sky 2025 01 15 To 2025 02 19          |              6.96299e-17 |                 1 |      -1.23078 |       1.78333 |         0.771367  |
 | Palworld 2024 12 09 To 2025 01 13              |             -2.00457e-17 |                 1 |      -1.33593 |       1.23842 |         0.785048  |
+| Path Of Exile 2025 06 06 To 2025 07 04         |              1.22587e-16 |                 1 |      -1.21062 |       1.95070 |         0.645881  |
 | Pubg  Battlegrounds 2025 10 22 To 2025 11 26   |              1.53272e-15 |                 1 |      -1.62417 |       3.24857 |        -0.0227268 |
+| Rainbow Six Siege 2024 08 19 To 2024 09 16     |             -7.70988e-18 |                 1 |      -1.17913 |       3.02125 |         0.500692  |
 | Sea Of Thieves 2024 10 03 To 2024 11 07        |              2.89892e-16 |                 1 |      -1.62489 |       2.10705 |        -0.14275   |
+| The Finals 2024 12 05 To 2025 01 02            |             -1.23358e-17 |                 1 |      -1.44562 |       3.09253 |        -0.122757  |
+| V Rising 2025 04 21 To 2025 05 19              |              1.07167e-16 |                 1 |      -1.21422 |       1.56245 |         0.763775  |
 | Warframe 2025 11 26 To 2025 12 31              |             -1.69617e-16 |                 1 |      -1.30175 |       2.62172 |         0.530523  |
 
 

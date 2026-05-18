@@ -1,0 +1,6 @@
+Step,Description,Result
+Initial cleaned game files,Daily observations for all 16 cleaned multiplayer games around major update dates,548 observations across 16 games
+Outcome construction,Standardize player counts within each game to create comparable z-scores,Players_scaled
+Event-time alignment,Convert dates into days relative to the update date,"day k, where k = 0 is update day"
+Main event-study window,Use observations in the dynamic +/-14 day window,436 observations
+Reference period,Omit day -1 from the event-study dummies,Coefficients are relative to the day before update

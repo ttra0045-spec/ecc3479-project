@@ -1,0 +1,8 @@
+Event time,Coefficient,Std. error,95% CI Low,95% CI High,Interpretation
+Day -7,-0.2916,0.2617,-0.806,0.223,No evidence of large pre-update spike
+Day -2,0.108,0.2617,-0.406,0.622,Close to baseline before update
+Day 0,1.6367,0.2617,1.122,2.151,Large immediate update-day increase
+Day 1,1.6533,0.2617,1.139,2.168,Effect continues after update
+Day 3,1.9076,0.2617,1.393,2.422,Peak response in the event window
+Day 7,1.2412,0.2617,0.727,1.756,Effect remains positive one week later
+Day 14,0.5423,0.2617,0.028,1.057,Effect fades but remains positive

@@ -1,0 +1,7 @@
+Variable,Meaning,Use in analysis
+Players,Raw daily player count,Original engagement measure
+Players_scaled,Within-game standardized player count,Main regression outcome
+day_k,Dummy for day k relative to update,Dynamic event-study coefficients
+post_update,Indicator equal to 1 after the update,Average before-after comparison
+is_coop,Indicator for co-op/PvE game classification,Heterogeneity check
+post_update x is_coop,Interaction between post-update and co-op status,Tests whether co-op games respond differently

@@ -42,10 +42,10 @@
 | Helldivers 2 2025 08 19 To 2025 09 23          |         0.0600944 |             0.199449   | Flat        |
 | No Man S Sky 2025 01 15 To 2025 02 19          |         0.771367  |             0.813016   | Positive    |
 | Palworld 2024 12 09 To 2025 01 13              |         0.785048  |             0.83434    | Positive    |
-| Path Of Exile 2025 06 06 To 2025 07 04         |         0.406425  |             0.628567   | Positive    |
+| Path Of Exile 2025 06 06 To 2025 07 04         |         0.645881  |             0.807195   | Positive    |
 | Pubg  Battlegrounds 2025 10 22 To 2025 11 26   |        -0.0227268 |            -0.00940796 | Flat        |
-| Rainbow Six Siege 2024 08 19 To 2024 09 16     |         0.530401  |             0.529487   | Positive    |
+| Rainbow Six Siege 2024 08 19 To 2024 09 16     |         0.500692  |             0.492598   | Positive    |
 | Sea Of Thieves 2024 10 03 To 2024 11 07        |        -0.14275   |            -0.163793   | Negative    |
-| The Finals 2024 12 05 To 2025 01 02            |        -0.184846  |            -0.168658   | Negative    |
-| V Rising 2025 04 21 To 2025 05 19              |         0.61451   |             0.696848   | Positive    |
+| The Finals 2024 12 05 To 2025 01 02            |        -0.122757  |            -0.123146   | Negative    |
+| V Rising 2025 04 21 To 2025 05 19              |         0.763775  |             0.822966   | Positive    |
 | Warframe 2025 11 26 To 2025 12 31              |         0.530523  |             0.603948   | Positive    |

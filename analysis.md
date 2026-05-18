@@ -8,13 +8,13 @@ This document analyzes the player trends for various games, highlighting the imp
 
 | Game | Players |
 |:---|---:|
-| the_finals_2024-12-05_to_2025-01-02.csv | count 29.00 |
-| | mean 17108.72 |
-| | std 2228.73 |
+| the_finals_2024-12-05_to_2025-01-02.csv | count 36.00 |
+| | mean 17082.75 |
+| | std 2065.38 |
 | | min 14097.00 |
-| | 25% 15480.00 |
-| | 50% 16733.00 |
-| | 75% 17786.00 |
+| | 25% 15661.50 |
+| | 50% 16714.00 |
+| | 75% 17953.25 |
 | | max 23470.00 |
 | deep_rock_galactic_2024-05-30_to_2024-07-04.csv | count 36.00 |
 | | mean 27956.44 |
@@ -24,13 +24,13 @@ This document analyzes the player trends for various games, highlighting the imp
 | | 50% 29888.00 |
 | | 75% 38966.00 |
 | | max 54160.00 |
-| rainbow_six_siege_2024-08-19_to_2024-09-16.csv | count 29.00 |
-| | mean 65268.41 |
-| | std 9514.71 |
+| rainbow_six_siege_2024-08-19_to_2024-09-16.csv | count 36.00 |
+| | mean 64519.25 |
+| | std 8819.45 |
 | | min 54120.00 |
-| | 25% 56374.00 |
-| | 50% 64010.00 |
-| | 75% 70421.00 |
+| | 25% 57600.50 |
+| | 50% 61654.00 |
+| | 75% 69954.00 |
 | | max 91165.00 |
 | palworld_2024-12-09_to_2025-01-13.csv | count 36.00 |
 | | mean 126708.97 |
@@ -64,13 +64,13 @@ This document analyzes the player trends for various games, highlighting the imp
 | | 50% 39196.50 |
 | | 75% 44450.00 |
 | | max 58019.00 |
-| path_of_exile_2025-06-06_to_2025-07-04.csv | count 29.00 |
-| | mean 88117.93 |
-| | std 49308.01 |
-| | min 7569.00 |
-| | 25% 82813.00 |
-| | 50% 100439.00 |
-| | 75% 118588.00 |
+| path_of_exile_2025-06-06_to_2025-07-04.csv | count 36.00 |
+| | mean 72148.94 |
+| | std 55060.82 |
+| | min 5491.00 |
+| | 25% 10564.75 |
+| | 50% 89626.00 |
+| | 75% 114951.25 |
 | | max 179556.00 |
 | don_t_starve_together_2023-04-13_to_2023-05-18.csv | count 36.00 |
 | | mean 65046.69 |
@@ -88,13 +88,13 @@ This document analyzes the player trends for various games, highlighting the imp
 | | 50% 642988.00 |
 | | 75% 664394.50 |
 | | max 755104.00 |
-| v_rising_2025-04-21_to_2025-05-19.csv | count 29.00 |
-| | mean 44094.00 |
-| | std 23087.88 |
-| | min 5925.00 |
-| | 25% 37420.00 |
-| | 50% 51436.00 |
-| | 75% 59001.00 |
+| v_rising_2025-04-21_to_2025-05-19.csv | count 36.00 |
+| | mean 36805.97 |
+| | std 25552.16 |
+| | min 5780.00 |
+| | 25% 7311.75 |
+| | 50% 46806.50 |
+| | 75% 57375.00 |
 | | max 76730.00 |
 | counter_strike_2_2024-04-23_to_2024-05-28.csv | count 36.00 |
 | | mean 1494628.44 |
