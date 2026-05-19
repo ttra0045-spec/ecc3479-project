@@ -155,14 +155,26 @@ sample_construction = pd.DataFrame({
         'Use observations in the dynamic +/-14 day window',
         'Omit day -1 from the event-study dummies'
     ],
-    'Result': [
-        '548 observations across 16 games',
-        'Players_scaled',
-        'day k, where k = 0 is update day',
-        '436 observations',
-        'Coefficients are relative to the day before update'
-    ]
+    'Result': [None, None, None, None, None]
 })
+
+# Programmatically compute sample sizes to avoid stale hard-coded numbers
+total_rows = 0
+main_event_rows = 0
+for game in GAME_SPECS:
+    df = load_game_frame(game)
+    total_rows += len(df)
+    update_date = pd.to_datetime(game['update'])
+    # Count rows in the +/-14 day window around the update (inclusive)
+    main_event_rows += int(((df['DateTime'] >= (update_date - pd.Timedelta(days=14))) & (df['DateTime'] <= (update_date + pd.Timedelta(days=14)))).sum())
+
+sample_construction['Result'] = [
+    f"{total_rows} observations across {len(GAME_SPECS)} games",
+    'Players_scaled',
+    'day k, where k = 0 is update day',
+    f"{main_event_rows} observations",
+    'Coefficients are relative to the day before update'
+]
 
 # ============================================================================
 # TABLE 2: Variable Definitions
