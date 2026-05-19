@@ -299,12 +299,16 @@ robustness_checks = pd.DataFrame({
 # Save all tables to CSV
 # ============================================================================
 
-sample_construction.to_csv(output_dir / 'table_01_sample_construction.csv', index=False)
-variable_definitions.to_csv(output_dir / 'table_02_variable_definitions.csv', index=False)
-summary_stats.to_csv(output_dir / 'table_03_summary_statistics.csv', index=False)
-event_study_coeffs.to_csv(output_dir / 'table_04_event_study_coefficients.csv', index=False)
-before_after_changes.to_csv(output_dir / 'table_05_before_after_changes.csv', index=False)
-robustness_checks.to_csv(output_dir / 'table_06_robustness_checks.csv', index=False)
+sample_construction.to_csv(output_dir / 'sample_construction.csv', index=False)
+variable_definitions.to_csv(output_dir / 'variable_definitions.csv', index=False)
+summary_stats.to_csv(output_dir / 'Table_1_Summary_Statistics.csv', index=False)
+event_study_coeffs.to_csv(output_dir / 'Table_2_Event_Study_Coefficients.csv', index=False)
+before_after_changes.to_csv(output_dir / 'Table_3_Before_After_Changes.csv', index=False)
+robustness_checks.to_csv(output_dir / 'Table_4_Robustness_Checks.csv', index=False)
+
+# Keep the standalone trend markdown files synchronized with the expanded tables.
+# Export event study coefficients as HTML table
+event_study_coeffs.to_html(output_dir / 'Table_2_Event_Study_Coefficients.html', index=False)
 
 # Keep the standalone trend markdown files synchronized with the expanded tables.
 before_after_markdown = "## Player Trend Analysis: Before vs. After Update\n\n"
@@ -360,9 +364,12 @@ def create_table_image(df, title, filename, figsize=(14, None), dpi=300):
     ax.axis('off')
     fig.patch.set_facecolor('white')
     
-    # Add title
-    if title:
+    # Add title (skip if empty)
+    if title and title.strip():
         fig.suptitle(title, fontsize=16, fontweight='bold', y=0.98)
+        pad = 0.95
+    else:
+        pad = 0.99
     
     # Create table
     table = ax.table(
@@ -392,7 +399,7 @@ def create_table_image(df, title, filename, figsize=(14, None), dpi=300):
             if row % 2 == 0:
                 cell.set_facecolor(row_alt_color)
     
-    plt.tight_layout(rect=[0.01, 0.01, 0.99, 0.95])
+    plt.tight_layout(rect=[0.01, 0.01, 0.99, pad])
     fig.savefig(output_dir / filename, dpi=dpi, bbox_inches='tight', facecolor='white')
     plt.close()
     print(f"✓ {filename}")
@@ -401,12 +408,12 @@ def create_table_image(df, title, filename, figsize=(14, None), dpi=300):
 # Create table images
 # ============================================================================
 
-create_table_image(sample_construction, 'Table 1: Sample Construction', 'table_01_sample_construction.png', figsize=(14, None))
-create_table_image(variable_definitions, 'Table 2: Variable Definitions', 'table_02_variable_definitions.png', figsize=(14, None))
-create_table_image(summary_stats, 'Table 3: Summary Statistics by Game', 'table_03_summary_statistics.png', figsize=(14, None))
-create_table_image(event_study_coeffs, 'Table 4: Main Event-Study Coefficients', 'table_04_event_study_coefficients.png', figsize=(18, None))
-create_table_image(before_after_changes, 'Table 5: Before-After Changes by Game', 'table_05_before_after_changes.png', figsize=(14, None))
-create_table_image(robustness_checks, 'Table 6: Robustness Checks', 'table_06_robustness_checks.png', figsize=(16, None))
+create_table_image(sample_construction, '', 'sample_construction.png', figsize=(14, None))
+create_table_image(variable_definitions, '', 'variable_definitions.png', figsize=(14, None))
+create_table_image(summary_stats, '', 'Table_1_Summary_Statistics.png', figsize=(14, None))
+create_table_image(event_study_coeffs, '', 'Table_2_Event_Study_Coefficients.png', figsize=(18, None))
+create_table_image(before_after_changes, '', 'Table_3_Before_After_Changes.png', figsize=(14, None))
+create_table_image(robustness_checks, '', 'Table_4_Robustness_Checks.png', figsize=(16, None))
 
 print("\n" + "="*60)
 print("All tables generated successfully!")

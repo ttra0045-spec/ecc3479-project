@@ -1,12 +1,56 @@
-# Week 4 Worksheet Repository: Exploratory Data Analysis
+# Game Update Player Engagement Report
 
-This repository is for Timothy Tran's ECC3479 project.
+**Research Question**: How do major game updates affect short-term player engagement?
 
-**Research Question**: How do major game updates affect short-term player engagement trajectories?
+**Dataset**: Daily Steam player count data for 16 multiplayer games over ~1-2 month periods, centered around major game updates.
 
-**Dataset**: Daily player count data for 16 multiplayer games over ~1-2 month periods, centered around major game updates.
+**Methodology**: Event-study design using OLS regression with standardised within-game outcomes, HC3 robust standard errors, and clustered standard errors (by game).
 
-**Analysis**: Event study design using OLS regression to estimate the causal effect of updates on player engagement; overlap-event control labels are documented, but not currently observed as separate indicators in cleaned data.
+**Main Finding**: Major updates generate an immediate engagement spike of **1.64 standard deviations** (95% CI: [1.12, 2.15]) on day 0, with effects persisting through day 14. Heterogeneity is substantial: co-op games respond more than PvP games.
+
+---
+
+## Quick Start: Reproduce All Results
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Generate all output tables and figures
+python code/generate_report_tables.py
+python code/generate_heterogeneity_figures.py
+
+# All outputs saved to outputs/ folder
+```
+
+**For detailed reproducibility instructions, see [REPRODUCIBILITY.md](REPRODUCIBILITY.md)**
+
+---
+
+## Report Tables & Figures Mapping
+
+The repo does not contain a `code/03_main_results.py` file. The equivalent production files are the scripts and notebooks below.
+
+### Tables
+
+| Report Location | Produced by | Output Files | Key Statistic |
+|---|---|---|---|
+| **Table 1: Sample Construction** | `code/generate_report_tables.py` | `Table_1_Summary_Statistics.csv/png` | 436 observations in ±14-day window |
+| **Table 2: Event-Study Coefficients** | `code/generate_report_tables.py` | `Table_2_Event_Study_Coefficients.csv/png/html` | Day 0: **1.6367** ± 0.2617 |
+| **Table 3: Before-After Changes** | `code/generate_report_tables.py` | `Table_3_Before_After_Changes.csv/png` | Pooled effect: **1.229** std devs |
+| **Table 4: Robustness Checks** | `code/generate_report_tables.py` | `Table_4_Robustness_Checks.csv/png` | Coefficient stable across 12 specs |
+
+### Figures
+
+| Report Location | Produced by | Output File | Insight |
+|---|---|---|---|
+| **Figure 1: Pre-existing Trends** | `code/generate_heterogeneity_figures.py` | `Figure_1_Pre_existing_Trends.png` | Baseline momentum variation (r ranges from -0.14 to +0.79) |
+| **Figure 2: Dynamic Effects** | `code/advanced_regression.ipynb` | `dynamic_effects_plot.png` | Coefficients peak day 3, fade by day 14 |
+| **Figure 3: Distribution by Day** | `code/box plot code` | `combined_day_by_day_standardized_boxplot.png` | Median shifts up after day 0, variance remains high |
+| **Figure 4: Co-op vs PvP** | `code/generate_heterogeneity_figures.py` | `Figure_4_Heterogeneity_Coop_vs_PvP.png` | Co-op: -1.0 on day 0; PvP: +0.3 (counter-intuitive) |
+| **Figure 5: Game-Level Ranking** | `code/generate_heterogeneity_figures.py` | `Figure_5_Game_Level_Heterogeneity.png` | Range: V Rising +1.88 to Helldivers 2 -0.62 |
+
+---
 
 ## Repository Structure
 
@@ -26,9 +70,14 @@ ecc3479-project/
 │   ├── advanced_regression.ipynb                     # Event study and interaction analysis on update effects.
 │   ├── robustness_checks.ipynb                       # Notebook for robustness checks on the event-study result.
 │   ├── regression_analysis.ipynb                     # Regression models and statistical tests.
+│   ├── first_order_analysis.ipynb                    # Notebook for first-order and correlation analysis.
+│   ├── temp_analysis.ipynb                           # Temporary analysis notebook for exploratory work.
+│   ├── generate_report_tables.py                     # Script to generate summary tables (CSV, PNG, HTML) for reports.
+│   ├── generate_heterogeneity_figures.py             # Script to generate heterogeneity and comparative visualizations.
+│   ├── robustness_utils.py                           # Utility functions for robustness checks and alternative specifications.
+│   ├── verify_reproducibility.py                     # Verification script to check reproducibility of outputs.
 │   ├── extra variables                               # File containing control variable specifications for each game.
-│   ├── box plot code                                 # Script for creating box plots.
-│   └── first_order_analysis.ipynb                    # Notebook for first-order and correlation analysis.
+│   └── box plot code                                 # Script/resource for creating box plots.
 ├── data:raw:/                                        # Folder for original, untouched data files.
 │   ├── raw-data-databook.md                          # Data dictionary for the raw data.
 │   └── *.csv                                         # The raw CSV data files for each game.
@@ -135,9 +184,46 @@ To reproduce all results from scratch, follow these steps **in order**:
 2. Run all cells
 3. **Expected output**: Robustness summary table, placebo tests, pre-trends test, and interpretation
 
-**What it does**: Stress-tests the main event-study estimate using alternative controls, alternative samples, robust inference methods, and placebo checks.
+**What it does**: Stress-tests the main event-study estimate using alternative controls, alternative samples, robust inference methods, and placebo checks. Uses utility functions from [code/robustness_utils.py](code/robustness_utils.py).
 
-### Step 7: Review Final Analysis Report
+### Step 7 (Optional): Generate Final Report Tables and Figures
+
+All output files use standardized naming matching the Word document table/figure labels for reproducibility:
+
+**Scripts**: 
+- [Code/generate_report_tables.py](Code/generate_report_tables.py)
+- [Code/generate_heterogeneity_figures.py](Code/generate_heterogeneity_figures.py)
+- [Code/box plot code](Code/box%20plot%20code) - For Figure_3 distribution plot
+
+Run these Python scripts to auto-generate final report tables and heterogeneity visualizations:
+
+```bash
+# Generate summary tables (CSV, PNG, HTML with standardized naming)
+python code/generate_report_tables.py
+
+# Generate heterogeneity analysis figures (Figure_1, Figure_4, Figure_5)
+python code/generate_heterogeneity_figures.py
+
+# Generate distribution plot (Figure_3)
+python code/box\ plot\ code
+```
+
+**All expected outputs with standardized naming**:
+
+**Tables:**
+- `Table_1_Summary_Statistics.csv` / `.png` - Summary statistics by game
+- `Table_2_Event_Study_Coefficients.csv` / `.png` / `.html` - Event-study coefficients and regression table
+- `Table_3_Before_After_Changes.csv` / `.png` - Before-after changes by game
+- `Table_4_Robustness_Checks.csv` / `.png` - Robustness checks for day-0 effect
+
+**Figures:**
+- `Figure_1_Pre_existing_Trends.png` - Pre-existing trends by game
+- `Figure_2_Dynamic_Effects.png` - Dynamic effects around update day (generated by advanced_regression.ipynb)
+- `Figure_3_Distribution_Standardised_Counts.png` - Distribution of standardised player counts
+- `Figure_4_Heterogeneity_Coop_vs_PvP.png` - Co-op vs PvP comparison
+- `Figure_5_Game_Level_Heterogeneity.png` - Game-level heterogeneity ranking
+
+### Step 8: Review Final Analysis Report
 
 **Document**: [analysis.md](analysis.md)
 
@@ -145,11 +231,21 @@ To reproduce all results from scratch, follow these steps **in order**:
 2. Review tables, figures, and interpretation
 3. Cross-reference with generated output files
 
+### Reproducibility Verification (Optional)
+
+To verify that all outputs have been successfully generated:
+
+```bash
+python code/verify_reproducibility.py
+```
+
+This will check that all required data files and outputs exist and validate key numerical results.
+
 ---
 
 ## Verification Checklist
 
-After running the pipeline, verify these files are present:
+After running the pipeline, verify these files are present (or run `python code/verify_reproducibility.py` for automated verification):
 
 **Data files** (should be in [data:clean:](data:clean:)):
 - [ ] palworld_2024-12-09_to_2025-01-13.csv
@@ -157,21 +253,28 @@ After running the pipeline, verify these files are present:
 - [ ] counter_strike_2_2024-04-23_to_2024-05-28.csv
 - [ ] (and 13 more game files)
 
-**Output plots** (should be in [outputs:](outputs:)):
-- [ ] dynamic_effects_plot.png (event study plot)
-- [ ] combined_day_by_day_standardized_boxplot.png
-- [ ] 16 individual game trend plots (palworld_players_trend.png, etc.)
-
-**Output tables** (should be in [outputs:](outputs:)):
-- [ ] event_study_table.html
-- [ ] interaction_effects_table.html (if interaction model was run)
+**Output tables with standardized naming** (should be in [outputs:](outputs:)):
+- [ ] Table_1_Summary_Statistics.csv and .png
+- [ ] Table_2_Event_Study_Coefficients.csv, .png, and .html
+- [ ] Table_3_Before_After_Changes.csv and .png
+- [ ] Table_4_Robustness_Checks.csv and .png
+- [ ] interaction_effects_table.html
 - [ ] robustness_summary_table.md
+
+**Output figures with standardized naming** (should be in [outputs:](outputs:)):
+- [ ] Figure_1_Pre_existing_Trends.png
+- [ ] Figure_2_Dynamic_Effects.png
+- [ ] Figure_3_Distribution_Standardised_Counts.png
+- [ ] Figure_4_Heterogeneity_Coop_vs_PvP.png
+- [ ] Figure_5_Game_Level_Heterogeneity.png
+- [ ] 16 individual game trend plots (palworld_players_trend.png, etc.)
 
 **Main reports**:
 - [ ] analysis.md (contains final results and interpretation)
 - [ ] Robustness_Check_Analysis.md (contains the robustness checks and causal validation)
 
 If all files are present, the pipeline has completed successfully and you should see results matching [analysis.md](analysis.md).
+
 
 ## Generate Clean Data From Raw Data
 
@@ -237,6 +340,108 @@ Key outputs saved to [outputs:](outputs:):
 - **Robustness results**: `robustness_summary_table.md`, `robustness_results.json`
 - **Visualizations**: `dynamic_effects_plot.png`, `combined_day_by_day_standardized_boxplot.png`
 - **Analysis summaries**: Various `.md` files with analysis results
+
+## Automated Report Generation Scripts
+
+### generate_report_tables.py
+
+This script automatically generates all summary tables used in the final report:
+
+**Usage**:
+```bash
+python code/generate_report_tables.py
+```
+
+**What it does**:
+- Loads cleaned data from all 16 games
+- Generates summary statistics (sample sizes, player count ranges, update effects)
+- Creates tables in multiple formats: CSV, PNG (as images), and HTML
+- Outputs to `outputs/` folder
+
+**Output files created**:
+- `sample_construction.csv` - Sample sizes and date ranges per game
+- `event_study_coefficients.csv` - Day-by-day coefficient estimates from event study
+- `before_after_changes.csv` - Before-update vs after-update comparisons
+- `summary_statistics.csv` - Descriptive statistics for each game
+
+### generate_heterogeneity_figures.py
+
+This script generates visualizations showing heterogeneous treatment effects across game types and individual games:
+
+**Usage**:
+```bash
+python code/generate_heterogeneity_figures.py
+```
+
+**What it does**:
+- Classifies games as Co-op vs PvP
+- Creates comparative visualizations showing how different game types respond to updates
+- Generates game-level heterogeneity rankings (which games see biggest effects)
+- Produces bar charts and distributions of effects
+
+**Key output files created**:
+- `heterogeneity_coop_vs_pvp_event_study.png` - Comparison of Co-op vs PvP effects
+- `heterogeneity_by_game_ranked.png` - Ranked bar chart of game-level effects
+- Other heterogeneity analysis figures
+
+### verify_reproducibility.py
+
+Verification script to ensure all analysis outputs can be successfully regenerated:
+
+**Usage**:
+```bash
+python code/verify_reproducibility.py
+```
+
+**What it does**:
+- Checks that all 16 cleaned data files are present and valid
+- Verifies that all required output files exist
+- Validates key numerical results match expected values
+- Provides a reproducibility checklist
+
+**Output**: Console report showing which files pass/fail verification checks
+
+## Utility Modules
+
+### robustness_utils.py
+
+Contains utility functions used by the robustness checks notebook for alternative specifications:
+
+**Key functions**:
+- `get_day_coefficient()` - Extracts coefficients and confidence intervals for specific event days
+- `run_event_study()` - Runs event study models with alternative specifications
+- Functions for outlier detection, inference robustness, and summary table generation
+- Used primarily by [Code/robustness_checks.ipynb](Code/robustness_checks.ipynb)
+
+## Additional Notebooks
+
+The following notebooks are included in the code folder but are not part of the main analysis pipeline:
+
+### regression_analysis.ipynb
+
+Alternative or supplementary regression models and statistical tests. This notebook may contain experiments or alternative approaches to the main event study methodology.
+
+### temp_analysis.ipynb
+
+Temporary analysis notebook used for exploratory work and experimentation. This notebook is not part of the core reproducible pipeline.
+
+## Standardized File Naming Convention
+
+All output files follow a standardized naming convention matching the Word document table and figure labels. This ensures reproducibility and consistency across all generated outputs:
+
+**Table Naming**: `Table_#_Description.{csv,png,html}`
+- Example: `Table_1_Summary_Statistics.csv`
+
+**Figure Naming**: `Figure_#_Description.png`
+- Example: `Figure_1_Pre_existing_Trends.png`
+
+This naming convention is enforced in all Python scripts and notebooks:
+- [Code/generate_report_tables.py](Code/generate_report_tables.py) - Tables 1-4
+- [Code/generate_heterogeneity_figures.py](Code/generate_heterogeneity_figures.py) - Figures 1, 4, 5
+- [Code/advanced_regression.ipynb](Code/advanced_regression.ipynb) - Figure 2
+- [Code/box plot code](Code/box%20plot%20code) - Figure 3
+
+When you regenerate the outputs using any of the scripts, all files will automatically be named with these standard labels, making it easy to map them to the Word document.
 
 ## Documentation
 

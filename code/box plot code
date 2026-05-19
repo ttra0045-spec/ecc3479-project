@@ -65,7 +65,7 @@ def make_standardized_day_boxplot(df: pd.DataFrame, outputs_dir: Path) -> None:
 	plt.xlabel("Day relative to update (0 = update day)")
 	plt.ylabel("Standardized players (within-game z-score)")
 	plt.tight_layout()
-	plt.savefig(outputs_dir / "combined_day_by_day_standardized_boxplot.png", dpi=300)
+	plt.savefig(outputs_dir / "Figure_3_Distribution_Standardised_Counts.png", dpi=300)
 	plt.close()
 
 
